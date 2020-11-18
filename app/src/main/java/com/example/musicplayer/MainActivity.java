@@ -14,7 +14,17 @@ public class MainActivity extends AppCompatActivity {
         populateDataModel();
     }
 
-    void populateDataModel(){
-        Song song = new Song();
+    void populateDataModel() {
+        Song song = new Song("Acoustic Breeze", "bensound.com", R.drawable.acousticbreeze, R.raw.acousticbreeze);
     }
+
+
+//Properties
+    Playlist playlist = new Playlist();
+
+
+
+
+
+
 }
