@@ -14,4 +14,10 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("gaming,");
         System.out.println("Jimmmmmmmmy");
     }
+
+    //Properties
+    Playlist playlist = new Playlist();
+
+
+
 }
