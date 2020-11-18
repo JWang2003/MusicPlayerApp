@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     void populateDataModel() {
         // Initialize properties of playlist
         playlist.name = "My Playlist";
@@ -50,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.happyrock, R.raw.happyrock);
         playlist.songs.add(song);
 
+
         song = new Song("Hey", "bensound.com",
                 R.drawable.hey, R.raw.hey);
         playlist.songs.add(song);
+
 
         song = new Song("Summer", "bensound.com",
                 R.drawable.summer, R.raw.summer);
