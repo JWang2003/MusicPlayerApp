@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         populateDataModel();
     }
 
-    void populateDataModel();
-    Song song = new Song();
+    void populateDataModel(){
+        Song song = new Song();
+    }
 }
