@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void populateDataModel(){
-        Song song = new Song();
+        playlist.name = "My Playlist";
+        playlist.songs = new ArrayList<Song>();
+
+        Song song = new Song("Acoustic Breeze", "bensound.com", R.drawable.acousticbreeze, R.raw.acousticbreeze);
+        playlist.songs.add(song);
     }
+    Playlist playlist = new Playlist();
 }
