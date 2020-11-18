@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         Song song = new Song("Acoustic Breeze", "bensound.com", R.drawable.acousticbreeze, R.raw.acousticbreeze);
         playlist.songs.add(song);
+        System.out.println("Hi");
     }
     Playlist playlist = new Playlist();
 }
