@@ -1,8 +1,14 @@
 package com.example.musicplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,9 +18,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         populateDataModel();
+        setUpRecyclerView();
+        connectXMLViews();
+
     }
 
 
+    // Initializing Song instances
     void populateDataModel() {
         // Initialize properties of playlist
         playlist.name = "My Playlist";
@@ -60,6 +70,52 @@ public class MainActivity extends AppCompatActivity {
         playlist.songs.add(song);
     }
 
+    // Set up RecyclerView
+    void setUpRecyclerView() {
+        LinearLayoutManager layoutManager  = new LinearLayoutManager(this);
+        songsRecyclerview.setLayoutManager(layoutManager);
+
+        // Connect the adapter to the recycler view
+
+
+    }
+
+    // Connecting variables to XML elements
+    void connectXMLViews() {
+        songsRecyclerview = findViewById(R.id.song_list_view);
+        imageView = findViewById(R.id.cover_image);
+        songNameTextView = findViewById(R.id.song_name_textview);
+        artistNameTextView = findViewById(R.id.artist_name_textview);
+        previousButton = findViewById(R.id.previous_button);
+        pauseButton = findViewById(R.id.pause_button);
+        playButton = findViewById(R.id.play_button);
+        nextButton = findViewById(R.id.next_button);
+
+    }
+
+
+
+
+    // XML Views
+    RecyclerView songsRecyclerview;
+    ImageView imageView;
+    TextView songNameTextView;
+    TextView artistNameTextView;
+    ImageButton previousButton;
+    ImageButton pauseButton;
+    ImageButton playButton;
+    ImageButton nextButton;
+
+
+
+
     // Properties
     Playlist playlist = new Playlist();
+
+
+
+
+
+
+
 }
