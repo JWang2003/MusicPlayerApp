@@ -22,7 +22,7 @@ public class SongViewHolder extends RecyclerView.ViewHolder {
         this.itemView = itemView;
         imageView = itemView.findViewById(com.example.musicapp.R.id.image_view);
         songNameTextView = itemView.findViewById(com.example.musicapp.R.id.song_name_textview);
-        artistNameTextView = itemView.findViewById(com.example.musicapp.R.id.artist_name_textview);
+        artistNameTextView = itemView.findViewById(com.example.musicapp.R.id.songWriter);
 
     }
 

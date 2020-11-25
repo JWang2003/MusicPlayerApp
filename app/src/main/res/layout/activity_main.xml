@@ -10,20 +10,11 @@
     tools:context=".MainActivity">
 
 
-    <!-- List of songs -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/song_list_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/song_controls_container" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
         android:paddingTop="15dp">
