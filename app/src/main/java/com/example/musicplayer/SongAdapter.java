@@ -34,6 +34,10 @@ public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
     public void onBindViewHolder(@NonNull SongViewHolder holder, int position) {
        // This method is called whenever existing ViewHolder needs to be reused
         // At this point, need to repopulate the ViewHolder
+        Song song = songs.get(position);
+        holder.imageView.setImageResource(song.imageResource);
+        holder.songNameTextView.setText(song.songName);
+        holder.artistNameTextView.setText(song.artistName);
 
     }
 

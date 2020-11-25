@@ -1,6 +1,7 @@
 package com.example.musicplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,8 +11,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         populateDataModel();
-        setUpRecyclerView();
         connectXMLViews();
-
+        setUpRecyclerView();
+        displayCurrentSong();
+//        setUpGridLayout();
     }
 
 
@@ -75,15 +75,23 @@ public class MainActivity extends AppCompatActivity {
     // Set up RecyclerView
     void setUpRecyclerView() {
         LinearLayoutManager layoutManager  = new LinearLayoutManager(this);
-        songsRecyclerview.setLayoutManager(layoutManager);
+        songsRecyclerView.setLayoutManager(layoutManager);
 
         // Connect the adapter to the recycler view
-
+        songAdapter = new SongAdapter(this, playlist.songs);
+        songsRecyclerView.setAdapter(songAdapter);
+    }
+//    Replace the setUpRecyclerView function with this one to use GridLayout instead
+    void setUpGridLayout(){
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        songsRecyclerView.setLayoutManager(gridLayoutManager);
+        songAdapter = new SongAdapter(this, playlist.songs);
+        songsRecyclerView.setAdapter(songAdapter);
     }
 
     // Connecting variables to XML elements
     void connectXMLViews() {
-        songsRecyclerview = findViewById(R.id.song_list_view);
+        songsRecyclerView = findViewById(R.id.song_list_view);
         imageView = findViewById(R.id.cover_image);
         songNameTextView = findViewById(R.id.song_name_textview);
         artistNameTextView = findViewById(R.id.artist_name_textview);
@@ -94,11 +102,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    void displayCurrentSong() {
+        Song currentSong = playlist.songs.get(currentSongIndex);
+        imageView.setImageResource(currentSong.imageResource);
+        songNameTextView.setText(currentSong.songName);
+        artistNameTextView.setText(currentSong.artistName);
+    }
 
 
     // XML Views
-    RecyclerView songsRecyclerview;
+    RecyclerView songsRecyclerView;
     ImageView imageView;
     TextView songNameTextView;
     TextView artistNameTextView;
@@ -107,11 +120,10 @@ public class MainActivity extends AppCompatActivity {
     ImageButton playButton;
     ImageButton nextButton;
 
-
-
-
     // Properties
     Playlist playlist = new Playlist();
+    SongAdapter songAdapter;
+    Integer currentSongIndex = 0;
 
 
 }
