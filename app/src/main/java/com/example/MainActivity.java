@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.musicapp.R;
+import com.example.R;
 import com.example.Playlist;
 import com.example.Song;
 import com.example.SongAdapter;
@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        populateDataModel();
-        connectXMLViews();
-        setUpRecyclerView();
-        displayCurrentSong();
+//        populateDataModel();
+//        connectXMLViews();
+//        setUpRecyclerView();
+//        displayCurrentSong();
 //        setUpGridLayout();
     }
 
