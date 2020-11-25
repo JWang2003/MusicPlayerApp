@@ -13,10 +13,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="16:15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintDimensionRatio="16:9"
         app:srcCompat="@drawable/acousticbreeze" />
 
     <!-- Transparent background for song name/author -->
@@ -107,6 +107,7 @@
     </LinearLayout>
 
     <!-- List of songs -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/song_list_view"
         android:layout_width="0dp"
