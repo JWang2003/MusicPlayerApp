@@ -8,9 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicapp.R;
+
 import java.util.ArrayList;
 
 public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
+
 
     // Constructor (Gives list of songs)
     SongAdapter(@NonNull Context context, @NonNull ArrayList<Song> songs) {
@@ -25,7 +28,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
     public SongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // This method is called whenever need to create new ViewHolder
         LayoutInflater inflater = LayoutInflater.from(context);
-        View itemview = inflater.inflate(R.layout.item_song, parent, false);
+        View itemview = inflater.inflate(com.example.musicapp.R.layout.item_song, parent, false);
         SongViewHolder viewHolder = new SongViewHolder(itemview);
         return viewHolder;
     }

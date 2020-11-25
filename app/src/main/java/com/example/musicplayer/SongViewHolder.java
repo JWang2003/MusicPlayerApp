@@ -9,7 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicapp.R;
+
 public class SongViewHolder extends RecyclerView.ViewHolder {
+
 
 
     // Constructor (Required for extends RecyclerVIew.ViewHolder)
@@ -17,9 +20,9 @@ public class SongViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         this.itemView = itemView;
-        imageView = itemView.findViewById(R.id.image_view);
-        songNameTextView = itemView.findViewById(R.id.song_name_textview);
-        artistNameTextView = itemView.findViewById(R.id.artist_name_textview);
+        imageView = itemView.findViewById(com.example.musicapp.R.id.image_view);
+        songNameTextView = itemView.findViewById(com.example.musicapp.R.id.song_name_textview);
+        artistNameTextView = itemView.findViewById(com.example.musicapp.R.id.artist_name_textview);
 
     }
 

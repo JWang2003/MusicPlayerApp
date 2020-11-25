@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.musicapp.R;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -92,13 +94,7 @@ public class MainActivity extends AppCompatActivity {
     // Connecting variables to XML elements
     void connectXMLViews() {
         songsRecyclerView = findViewById(R.id.song_list_view);
-        imageView = findViewById(R.id.cover_image);
         songNameTextView = findViewById(R.id.song_name_textview);
-        artistNameTextView = findViewById(R.id.artist_name_textview);
-        previousButton = findViewById(R.id.previous_button);
-        pauseButton = findViewById(R.id.pause_button);
-        playButton = findViewById(R.id.play_button);
-        nextButton = findViewById(R.id.next_button);
 
     }
 
