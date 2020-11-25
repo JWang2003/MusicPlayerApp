@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example;
 
 // Variable types
 import android.view.View;

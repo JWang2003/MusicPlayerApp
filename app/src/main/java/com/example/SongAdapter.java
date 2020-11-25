@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicapp.R;
+import com.example.Song;
 
 import java.util.ArrayList;
 

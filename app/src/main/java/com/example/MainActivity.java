@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.musicapp.R;
+import com.example.Playlist;
+import com.example.Song;
+import com.example.SongAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Connecting variables to XML elements
     void connectXMLViews() {
-        songsRecyclerView = findViewById(R.id.song_list_view);
+//        songsRecyclerView = findViewById(R.id.song_list_view);
         songNameTextView = findViewById(R.id.song_name_textview);
 
     }
