@@ -21,8 +21,11 @@ public class PlaySongMain extends AppCompatActivity {
         System.out.println("Created oncreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_song_main);
+        
+        // Process the extra information from intent
         getIncomingIntent();
 
+        // Go back to mainactivity
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
