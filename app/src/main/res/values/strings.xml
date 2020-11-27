@@ -3,5 +3,10 @@
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="welcome">Welcome</string>
+    <string name="rick_roullete">Rick Roullete</string>
+    <string name="our_songs">Our Songs</string>
+    <string name="help">Help</string>
+    <string name="home">Home</string>
 
 </resources>

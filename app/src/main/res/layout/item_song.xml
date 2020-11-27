@@ -1,63 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background_color"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/no_color"
+    android:paddingBottom="20dp">
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="20dp"
+        app:cardElevation="30dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_margin="1dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/image_view"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/acousticbreeze" />
+        android:layout_gravity="center">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/acousticbreeze"
+            android:scaleType="centerCrop"
+            android:layout_gravity = "center"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/songName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toEndOf="@id/image_view"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        android:layout_gravity="center"
+        android:layout_margin="0dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Song Name"
+        android:textColor="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/song_name_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/aldrich"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:text="Song Name" />
-
-        <TextView
-            android:id="@+id/artist_name_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/aldrich"
-            android:textColor="@color/black"
-            android:text="Artist Name" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/artistName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="0dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Artist Name"
+        android:textColor="#CFCFCF"
+        android:textSize="9sp"
+        android:layout_marginBottom="20dp"/>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

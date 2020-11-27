@@ -14,12 +14,14 @@ import com.example.Song;
 import java.util.ArrayList;
 
 public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
-
+    // Connect OnNoteListener created in SongViewHolder to adapter
+    private SongViewHolder.OnNoteListener mOnNoteListener;
 
     // Constructor (Gives list of songs)
-    SongAdapter(@NonNull Context context, @NonNull ArrayList<Song> songs) {
+    SongAdapter(@NonNull Context context, @NonNull ArrayList<Song> songs, SongViewHolder.OnNoteListener onNoteListener) {
         this.context = context;
         this.songs = songs;
+        this.mOnNoteListener = onNoteListener;
     }
 
 
@@ -30,7 +32,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
         // This method is called whenever need to create new ViewHolder
         LayoutInflater inflater = LayoutInflater.from(context);
         View itemview = inflater.inflate(com.example.R.layout.item_song, parent, false);
-        SongViewHolder viewHolder = new SongViewHolder(itemview);
+        SongViewHolder viewHolder = new SongViewHolder(itemview, mOnNoteListener); // Now takes in a OnNoteListener, passing it to constructor of SongViewHolder
         return viewHolder;
     }
 

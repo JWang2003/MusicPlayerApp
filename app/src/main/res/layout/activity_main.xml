@@ -22,7 +22,8 @@ tools:context=".MainActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/MenuBar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,14 +37,14 @@ tools:context=".MainActivity">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Home"
+                android:text="@string/home"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#ffffff"
-                android:textSize="36dp" />
+                android:textSize="36sp" />
             <SearchView
                 android:layout_width="191dp"
                 android:layout_height="33dp"
-                android:layout_marginLeft="60dp"
+                android:layout_marginStart="60dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/searchbar" />
         </LinearLayout>
@@ -56,34 +57,37 @@ tools:context=".MainActivity">
             android:id="@+id/textView"
             android:layout_width="384dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_bold"
             android:gravity="end"
-            android:text="Welcome"
+            android:text="@string/welcome"
             android:textColor="#ffffff"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="90dp"
             android:layout_height="47dp"
             android:layout_weight="1"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             app:srcCompat="@drawable/ahyes" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="25dp"
+        android:id="@+id/bottomMenuBar"
+        android:layout_marginBottom="20dp">
         <Button
             android:id="@+id/button3"
             android:layout_width="50dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:text="Rick Roullete"
-            android:layout_marginLeft="20dp"/>
+            android:text="@string/rick_roullete"
+            android:layout_marginStart="20dp"
+            tools:ignore="NestedWeights" />
         <LinearLayout
             android:layout_width="50dp"
             android:layout_height="match_parent"
@@ -97,9 +101,10 @@ tools:context=".MainActivity">
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
                 android:layout_marginRight="30dp"
-                android:textSize="20dp"
-                android:text="Our Songs"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="20sp"
+                android:text="@string/our_songs"
+                android:layout_marginBottom="10dp"
+                tools:ignore="RtlHardcoded" />
             <TextView
                 android:id="@+id/textView4"
                 android:gravity="right"
@@ -107,9 +112,22 @@ tools:context=".MainActivity">
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
                 android:layout_marginRight="30dp"
-                android:textSize="20dp"
-                android:text="Help" />
+                android:textSize="20sp"
+                android:text="@string/help"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/MenuBar"
+        android:id="@+id/recyclerView"
+        android:scrollbars="vertical"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

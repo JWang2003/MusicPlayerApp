@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,18 +20,16 @@ import com.example.Playlist;
 import com.example.Song;
 import com.example.SongAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SongViewHolder.OnNoteListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        populateDataModel();
-//        connectXMLViews();
-//        setUpRecyclerView();
-//        displayCurrentSong();
-//        setUpGridLayout();
+        populateDataModel();
+        connectXMLViews();
+        setUpGridLayout();
     }
 
 
@@ -77,52 +79,42 @@ public class MainActivity extends AppCompatActivity {
         playlist.songs.add(song);
     }
 
-    // Set up RecyclerView
-    void setUpRecyclerView() {
-        LinearLayoutManager layoutManager  = new LinearLayoutManager(this);
-        songsRecyclerView.setLayoutManager(layoutManager);
-
-        // Connect the adapter to the recycler view
-        songAdapter = new SongAdapter(this, playlist.songs);
-        songsRecyclerView.setAdapter(songAdapter);
-    }
-//    Replace the setUpRecyclerView function with this one to use GridLayout instead
+//   Set up recycler view with gridlayout
     void setUpGridLayout(){
+        // span count is how many to place side to side
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         songsRecyclerView.setLayoutManager(gridLayoutManager);
-        songAdapter = new SongAdapter(this, playlist.songs);
+        songAdapter = new SongAdapter(this, playlist.songs, this); // We pass the onNoteListener to the constructor of SongAdapter
         songsRecyclerView.setAdapter(songAdapter);
+        songsRecyclerView.setHasFixedSize(true);
     }
 
     // Connecting variables to XML elements
     void connectXMLViews() {
-//        songsRecyclerView = findViewById(R.id.song_list_view);
-        songNameTextView = findViewById(R.id.song_name_textview);
-
-    }
-
-    void displayCurrentSong() {
-        Song currentSong = playlist.songs.get(currentSongIndex);
-        imageView.setImageResource(currentSong.imageResource);
-        songNameTextView.setText(currentSong.songName);
-        artistNameTextView.setText(currentSong.artistName);
+        songsRecyclerView = findViewById(R.id.recyclerView);
     }
 
 
     // XML Views
     RecyclerView songsRecyclerView;
-    ImageView imageView;
-    TextView songNameTextView;
-    TextView artistNameTextView;
-    ImageButton previousButton;
-    ImageButton pauseButton;
-    ImageButton playButton;
-    ImageButton nextButton;
 
     // Properties
     Playlist playlist = new Playlist();
     SongAdapter songAdapter;
     Integer currentSongIndex = 0;
 
+// This method was implemented from SongViewHolder
+    @Override
+    public void onNoteClick(int position) {
 
+        // Navigate to PlaySongMain with current song
+        System.out.println("Clicked: " + position);
+        Intent intent = new Intent(this, PlaySongMain.class);
+        intent.putExtra("SongName", playlist.songs.get(position).songName);
+        intent.putExtra("ArtistName", playlist.songs.get(position).artistName);
+        intent.putExtra("ImageResource", playlist.songs.get(position).imageResource);
+        intent.putExtra("Mp3Resource", playlist.songs.get(position).mp3Resource);
+        startActivity(intent);
+
+    }
 }
