@@ -9,7 +9,9 @@ import java.util.ArrayList;
 
 import android.content.Intent;
 import android.os.Bundle;
+import java.util.Random;
 import android.os.Parcelable;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,6 +24,16 @@ import com.example.SongAdapter;
 
 public class MainActivity extends AppCompatActivity implements SongViewHolder.OnNoteListener {
 
+    // XML Views
+    RecyclerView songsRecyclerView;
+
+    // Properties
+    Playlist playlist = new Playlist();
+    SongAdapter songAdapter;
+    Integer currentSongIndex = 0;
+    boolean rickrollModeEnabled = false;
+    ImageButton rickrollButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         populateDataModel();
         connectXMLViews();
         setUpGridLayout();
+        setUpButtonHandlers();
     }
 
 
@@ -92,16 +105,33 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     // Connecting variables to XML elements
     void connectXMLViews() {
         songsRecyclerView = findViewById(R.id.recyclerView);
+        rickrollButton = findViewById(R.id.rickroll);
+    }
+
+    void setUpButtonHandlers() {
+        rickrollButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            rickrollModeEnabled = true;
+            System.out.println(">>> Rickroll mode enabled (forever)!");
+            }
+        });
+    }
+
+    boolean determineRickrollState() {
+                //TODO: interface for inputting odds
+        int upperLimit = 6;             // temporary constant in absence of user input
+        Random r = new Random();
+        int randInt = r.nextInt(upperLimit);
+        System.out.println(">>> The random integer generated was " + randInt);
+        if (randInt == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
-    // XML Views
-    RecyclerView songsRecyclerView;
-
-    // Properties
-    Playlist playlist = new Playlist();
-    SongAdapter songAdapter;
-    Integer currentSongIndex = 0;
 
 // This method was implemented from SongViewHolder
     @Override
