@@ -42,14 +42,15 @@ tools:context=".MainActivity">
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#ffffff"
                 android:textSize="36sp" />
+
             <SearchView
+                android:id="@+id/search_bar"
                 android:layout_width="191dp"
                 android:layout_height="33dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="8dp"
-                android:id = "@+id/search_bar"
-                android:iconifiedByDefault="false"
-                android:background="@drawable/searchbar"/>
+                android:background="@drawable/searchbar"
+                android:iconifiedByDefault="false" />
         </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"

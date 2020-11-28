@@ -112,12 +112,20 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         rickrollButton = findViewById(R.id.rickroll);
         searchView = findViewById(R.id.search_bar);
 
+        searchView.setOnClickListener(new SearchView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchView.clearFocus();
+            }
+        });
+
         // Set up the searchview
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                songAdapter.filter(query);
+                System.out.println(query);
                 searchView.clearFocus();
+                songAdapter.filter(query);
                 return true;
             }
 
