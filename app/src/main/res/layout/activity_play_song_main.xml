@@ -65,6 +65,7 @@
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="39dp" />
+
         <TextView
             android:id="@+id/songWriter"
             android:layout_width="match_parent"
@@ -98,44 +99,49 @@
             android:layout_marginBottom="10dp">
 
             <!--Shuffle button-->
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/shuffle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/shuffle"
+                android:backgroundTint="#FFFFFF"
+                android:tint="#555454" />
+
+            <!--Prev button-->
+            <ImageButton
+                android:id="@+id/prev"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Shuffle" />
+                app:srcCompat="@android:drawable/ic_media_previous" />
 
-            <!--Pause button-->
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Pause" />
-
-            <!--Play button-->
-            <Button
+            <!--Play/Pause button-->
+            <ImageButton
                 android:id="@+id/pauseplay"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Play" />
+                app:srcCompat="@android:drawable/ic_media_play"/>
+
 
             <!--Next button-->
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/next"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Next" />
+                app:srcCompat="@android:drawable/ic_media_next" />
 
             <!--Loop button-->
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:id="@+id/loop"
+                android:layout_width="0dp"
+                android:layout_height="51dp"
                 android:layout_weight="1"
-                android:text="Loop" />
+                app:srcCompat="@android:drawable/stat_notify_sync"
+                />
+
         </LinearLayout>
         <!--Bottom bar [end]-->
 

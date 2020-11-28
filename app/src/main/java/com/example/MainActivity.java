@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     // Properties
     Playlist playlist = new Playlist();
     SongAdapter songAdapter;
-    Integer currentSongIndex = 0;
     boolean rickrollModeEnabled = false;
     ImageButton rickrollButton;
 
@@ -138,12 +137,9 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     public void onNoteClick(int position) {
 
         // Navigate to PlaySongMain with current song
-        System.out.println("Clicked: " + position);
         Intent intent = new Intent(this, PlaySongMain.class);
-        intent.putExtra("SongName", playlist.songs.get(position).songName);
-        intent.putExtra("ArtistName", playlist.songs.get(position).artistName);
-        intent.putExtra("ImageResource", playlist.songs.get(position).imageResource);
-        intent.putExtra("Mp3Resource", playlist.songs.get(position).mp3Resource);
+        intent.putParcelableArrayListExtra("Playlist", playlist.songs);
+        intent.putExtra("Index", position);
         startActivity(intent);
 
     }
