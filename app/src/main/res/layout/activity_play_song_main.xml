@@ -105,8 +105,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/shuffle"
-                android:backgroundTint="#FFFFFF"
-                android:tint="#555454" />
+                android:backgroundTint="#FFFFFF" />
 
             <!--Prev button-->
             <ImageButton
@@ -142,6 +141,7 @@
                 android:layout_height="51dp"
                 android:layout_weight="1"
                 app:srcCompat="@android:drawable/stat_notify_sync"
+
                 />
 
         </LinearLayout>
