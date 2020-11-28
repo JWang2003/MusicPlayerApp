@@ -80,11 +80,12 @@ tools:context=".MainActivity">
         android:layout_marginTop="25dp"
         android:id="@+id/bottomMenuBar"
         android:layout_marginBottom="20dp">
-        <Button
-            android:id="@+id/button3"
+        <ImageButton
+            android:id="@+id/rickroll"
             android:layout_width="50dp"
             android:layout_height="80dp"
             android:layout_weight="1"
+            android:background="@drawable/agony"
             android:text="@string/rick_roullete"
             android:layout_marginStart="20dp"
             tools:ignore="NestedWeights" />
