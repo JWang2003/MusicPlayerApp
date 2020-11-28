@@ -7,6 +7,8 @@ android:background="@drawable/gradientbackgroundred"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
+
+    <!--Background-->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="800dp"
@@ -18,6 +20,7 @@ tools:context=".MainActivity">
         tools:layout_editor_absoluteY="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +35,7 @@ tools:context=".MainActivity">
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="30dp">
+
             <TextView
                 android:id="@+id/HomeText"
                 android:layout_width="wrap_content"
@@ -41,6 +45,7 @@ tools:context=".MainActivity">
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#ffffff"
                 android:textSize="36sp" />
+
             <SearchView
                 android:layout_width="191dp"
                 android:layout_height="33dp"
@@ -53,17 +58,19 @@ tools:context=".MainActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="384dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_bold"
-            android:gravity="end"
+            android:gravity="start"
             android:text="@string/welcome"
             android:textColor="#ffffff"
             android:textSize="25sp" />
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="90dp"

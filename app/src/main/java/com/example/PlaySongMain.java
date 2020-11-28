@@ -25,6 +25,7 @@ public class PlaySongMain extends AppCompatActivity {
         // Process the extra information from intent
         getIncomingIntent();
 
+
         // Go back to mainactivity
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
