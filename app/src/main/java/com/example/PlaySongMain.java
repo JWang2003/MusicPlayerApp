@@ -12,13 +12,17 @@ import android.widget.TextView;
 
 import com.example.R;
 
+import java.util.ArrayList;
+
 public class PlaySongMain extends AppCompatActivity {
 
     int mp3Resource;
+    Song currentSong;
+    ArrayList<Song> songs;
+    int currentSongIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Created oncreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_song_main);
         
@@ -36,16 +40,21 @@ public class PlaySongMain extends AppCompatActivity {
     }
 
     private void getIncomingIntent(){
-        System.out.println("incoming intents");
-        if(getIntent().hasExtra("SongName") && getIntent().hasExtra("ArtistName") && getIntent().hasExtra("ImageResource") && getIntent().hasExtra("Mp3Resource")){
-            System.out.println("Found");
-            String songName = getIntent().getStringExtra("SongName");
-            String artistName = getIntent().getStringExtra("ArtistName");
-            int imageResource = getIntent().getIntExtra("ImageResource", 0);
-            int mp3Resource = getIntent().getIntExtra("Mp3Resource", 0);
+        if (getIntent().hasExtra("Playlist") && getIntent().hasExtra("Index")){
+            songs = getIntent().getParcelableArrayListExtra("Playlist");
+            currentSongIndex = getIntent().getIntExtra("Index", 0);
+            currentSong = songs.get(currentSongIndex);
+            System.out.println(currentSongIndex);
+
+            String songName = currentSong.songName;
+            String artistName = currentSong.artistName;
+            int imageResource = currentSong.imageResource;
+            int mp3Resource = currentSong.mp3Resource;
             setDisplay(songName, artistName, imageResource);
+            System.out.println(songs);
         }
     }
+
     private void setDisplay(String songNamed, String artistName, int imageResource){
         TextView songTitle = findViewById(R.id.songName);
         songTitle.setText(songNamed);

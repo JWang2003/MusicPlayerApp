@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.R;
@@ -26,11 +27,12 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 
     // XML Views
     RecyclerView songsRecyclerView;
+    SearchView searchView;
 
     // Properties
     Playlist playlist = new Playlist();
+    ArrayList<Song> absolutePlaylist; // This is because recyclerview will shrink the playlist, so we need a default one
     SongAdapter songAdapter;
-    Integer currentSongIndex = 0;
     boolean rickrollModeEnabled = false;
     ImageButton rickrollButton;
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         connectXMLViews();
         setUpGridLayout();
         setUpButtonHandlers();
+        absolutePlaylist = new ArrayList<>(playlist.songs);
     }
 
 
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         song = new Song("Summer", "bensound.com",
                 R.drawable.summer, R.raw.summer);
         playlist.songs.add(song);
+
     }
 
 //   Set up recycler view with gridlayout
@@ -106,6 +110,23 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     void connectXMLViews() {
         songsRecyclerView = findViewById(R.id.recyclerView);
         rickrollButton = findViewById(R.id.rickroll);
+        searchView = findViewById(R.id.search_bar);
+
+        // Set up the searchview
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                songAdapter.filter(query);
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                songAdapter.filter(newText);
+                return true;
+            }
+        });
     }
 
     void setUpButtonHandlers() {
@@ -132,18 +153,16 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     }
 
 
-
 // This method was implemented from SongViewHolder
     @Override
     public void onNoteClick(int position) {
-
         // Navigate to PlaySongMain with current song
-        System.out.println("Clicked: " + position);
+        Song currentSong = playlist.songs.get(position);
+        int indexOfCurrentSong = absolutePlaylist.indexOf(currentSong);
         Intent intent = new Intent(this, PlaySongMain.class);
-        intent.putExtra("SongName", playlist.songs.get(position).songName);
-        intent.putExtra("ArtistName", playlist.songs.get(position).artistName);
-        intent.putExtra("ImageResource", playlist.songs.get(position).imageResource);
-        intent.putExtra("Mp3Resource", playlist.songs.get(position).mp3Resource);
+        System.out.println("Length of playlist is: " + absolutePlaylist.size());
+        intent.putParcelableArrayListExtra("Playlist", absolutePlaylist);
+        intent.putExtra("Index", indexOfCurrentSong);
         startActivity(intent);
 
     }

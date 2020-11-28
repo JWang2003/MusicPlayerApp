@@ -22,7 +22,7 @@
             android:id="@+id/imageView"
             android:src="@drawable/acousticbreeze"
             android:scaleType="centerCrop"
-            android:layout_gravity = "center"/>
+            android:layout_gravity ="center"/>
 
     </androidx.cardview.widget.CardView>
 

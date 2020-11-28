@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,18 +14,24 @@ import com.example.R;
 import com.example.Song;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
     // Connect OnNoteListener created in SongViewHolder to adapter
     private SongViewHolder.OnNoteListener mOnNoteListener;
 
+    // Properties
+    Context context;
+    ArrayList<Song> songs;
+    ArrayList<Song> songsCopy;
+
     // Constructor (Gives list of songs)
     SongAdapter(@NonNull Context context, @NonNull ArrayList<Song> songs, SongViewHolder.OnNoteListener onNoteListener) {
         this.context = context;
         this.songs = songs;
+        songsCopy = new ArrayList<>(songs);
         this.mOnNoteListener = onNoteListener;
     }
-
 
     // Overridden methods (Required for extend RecyclerView.Adapter)
     @NonNull
@@ -53,8 +61,21 @@ public class SongAdapter extends RecyclerView.Adapter<SongViewHolder> {
         return songs.size();
     }
 
-    // Properties
-    Context context;
-    ArrayList<Song> songs;
+    public void filter(String text) {
+        songs.clear();
+        if(text.isEmpty()){
+            songs.addAll(songsCopy);
+        } else{
+            text = text.toLowerCase();
+            for(Song item: songsCopy){
+                if(item.songName.toLowerCase().contains(text) || item.artistName.toLowerCase().contains(text)){
+                    songs.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
 
 }
+
+
