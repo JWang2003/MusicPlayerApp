@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     }
 
     boolean determineRickrollState() {
-                //TODO: interface for inputting odds
+
         int upperLimit = 6;             // temporary constant in absence of user input
         Random r = new Random();
         int randInt = r.nextInt(upperLimit);

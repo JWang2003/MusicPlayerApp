@@ -120,9 +120,11 @@
             <ImageButton
                 android:id="@+id/pauseplay"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_media_play"/>
+                android:background="@drawable/play"
+                android:backgroundTint="#FFFCFC"
+                android:tint="#FFFFFF" />
 
 
             <!--Next button-->
