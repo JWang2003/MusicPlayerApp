@@ -12,15 +12,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 public class SettingsMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     SeekBar rickrollChanceSlider;
     TextView rickrollOddsDisplay;
     ConstraintLayout mConstraintLayout;
-    int rickrollOdds;
+    int rickrollOdds = 1;
     String pfpSelection;
     String themeSelection;
+    int pfpSelectionIndex;
+    int themeSelectionIndex;
     int pfp;
     int theme;
     int flag;
@@ -42,6 +45,8 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         if (!(theme == 0)) {
             editor.putInt("Flag", flag);
         }
+        editor.putInt("PFPIndex", pfpSelectionIndex);
+        editor.putInt("themeIndex", themeSelectionIndex);
         // Commit the edits!
         editor.commit();
     }
@@ -55,6 +60,9 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         pfp = settings.getInt("PFP", 0);
         theme = settings.getInt("Theme", 0);
         flag = settings.getInt("Flag", 0);
+        pfpSelectionIndex = settings.getInt("PFPIndex", 0);
+        themeSelectionIndex = settings.getInt("themeIndex", 0);
+
         // This checks if page is not null aka, page is being reloaded
         setContentView(R.layout.settings_main);
         System.out.println(rickrollOdds);
@@ -103,10 +111,14 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         pfpSpinner.setAdapter(pfpAdapter);
         pfpSpinner.setOnItemSelectedListener(this);
 
+        // PULL SELECTIONS FROM STORED
+        themeSpinner.setSelection(themeSelectionIndex);
+        pfpSpinner.setSelection(pfpSelectionIndex);
+
         // RICKROLL CHANCE SEEK BAR
         rickrollOddsDisplay = (TextView) findViewById(R.id.rickrollOddsDisplay);
         rickrollChanceSlider = (SeekBar) findViewById(R.id.rickrollOddsSlider);
-        rickrollChanceSlider.setProgress(rickrollOdds -1);
+        rickrollChanceSlider.setProgress(rickrollOdds - 1);
         rickrollOddsDisplay.setText("1 : " + rickrollOdds);
         rickrollChanceSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -129,9 +141,11 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()) {
             case R.id.countrySpinner:
+                themeSelectionIndex = parent.getSelectedItemPosition();
                 themeSelection = parent.getSelectedItem().toString();
                 break;
             case R.id.pfpSpinner:
+                pfpSelectionIndex = parent.getSelectedItemPosition();
                 pfpSelection = parent.getSelectedItem().toString();
                 break;
             default:
