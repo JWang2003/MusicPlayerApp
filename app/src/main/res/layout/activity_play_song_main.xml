@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".PlaySongMain">
 
-
+    <!--Top bar [start]-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,11 +16,13 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="10dp">
 
+        <!--back button-->
         <Button
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Back" />
+
 
         <Button
             android:id="@+id/button8"
@@ -29,7 +31,9 @@
             android:layout_marginLeft="217dp"
             android:text="Button" />
     </LinearLayout>
+    <!--Top bar [end]-->
 
+    <!--Song Image-->
     <ImageView
         android:id="@+id/songImage"
         android:layout_width="300dp"
@@ -41,6 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ahyes"/>
 
+    <!--Song info [start]-->
     <LinearLayout
         android:id="@+id/TextViews"
         android:layout_width="match_parent"
@@ -60,6 +65,7 @@
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="39dp" />
+
         <TextView
             android:id="@+id/songWriter"
             android:layout_width="match_parent"
@@ -73,14 +79,17 @@
             android:textSize="25dp" />
 
     </LinearLayout>
+    <!--Song info [end]-->
 
-
+    <!--Bottom section [start]-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
+
+        <!--Bottom bar [start]-->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -89,48 +98,64 @@
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
+            <!--Shuffle button-->
+            <ImageButton
+                android:id="@+id/shuffle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/shuffle"
+                android:backgroundTint="#FFFFFF" />
+
+            <!--Prev button-->
+            <ImageButton
+                android:id="@+id/prev"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Shuffle" />
+                app:srcCompat="@android:drawable/ic_media_previous" />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Prev" />
-
-            <Button
+            <!--Play/Pause button-->
+            <ImageButton
                 android:id="@+id/pauseplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="Play" />
+                android:background="@drawable/play"
+                android:backgroundTint="#FFFCFC"
+                android:tint="#FFFFFF" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Next" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
+            <!--Next button-->
+            <ImageButton
+                android:id="@+id/next"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Loop" />
+                app:srcCompat="@android:drawable/ic_media_next" />
+
+            <!--Loop button-->
+            <ImageButton
+                android:id="@+id/loop"
+                android:layout_width="0dp"
+                android:layout_height="51dp"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/stat_notify_sync"
+
+                />
+
         </LinearLayout>
+        <!--Bottom bar [end]-->
 
+        <!--Lower margin [start]-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="5dp">
 
+
+            <!--Ask Hana-->
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
@@ -145,6 +170,8 @@
                 android:layout_weight="1"
                 android:text="TextView" />
         </LinearLayout>
+        <!--Lower margin [end]-->
     </LinearLayout>
+    <!--Lower section [end]-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

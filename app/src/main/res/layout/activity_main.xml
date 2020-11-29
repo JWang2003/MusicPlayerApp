@@ -8,6 +8,8 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 
+
+    <!--Background [start]-->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="800dp"
@@ -19,6 +21,9 @@ tools:context=".MainActivity">
         tools:layout_editor_absoluteY="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+    <!--Background [end]-->
+
+    <!--Top section [start]-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +31,7 @@ tools:context=".MainActivity">
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/MenuBar">
 
+        <!--Top bar-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +39,8 @@ tools:context=".MainActivity">
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="30dp">
+
+            <!--Home text-->
             <TextView
                 android:id="@+id/HomeText"
                 android:layout_width="wrap_content"
@@ -43,6 +51,8 @@ tools:context=".MainActivity">
                 android:textColor="#ffffff"
                 android:textSize="36sp" />
 
+
+            <!--Search bar-->
             <SearchView
                 android:id="@+id/search_bar"
                 android:layout_width="191dp"
@@ -52,22 +62,29 @@ tools:context=".MainActivity">
                 android:background="@drawable/searchbar"
                 android:iconifiedByDefault="false" />
         </LinearLayout>
+        <!--Top section [end]-->
+
+    <!-- Middle bar [start]-->
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <!--Welcome text-->
         <TextView
             android:id="@+id/textView"
             android:layout_width="384dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_bold"
-            android:gravity="end"
+            android:gravity="start"
             android:text="@string/welcome"
             android:textColor="#ffffff"
             android:textSize="25sp" />
+
+        <!--User pfp-->
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="90dp"
@@ -76,6 +93,10 @@ tools:context=".MainActivity">
             android:layout_marginEnd="20dp"
             app:srcCompat="@drawable/ahyes" />
     </LinearLayout>
+    <!--Middle bar [end]-->
+
+
+    <!--Bottom bar [start]-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -84,6 +105,8 @@ tools:context=".MainActivity">
         android:layout_marginTop="25dp"
         android:id="@+id/bottomMenuBar"
         android:layout_marginBottom="20dp">
+
+        <!--Rickroullette button-->
         <ImageButton
             android:id="@+id/rickroll"
             android:layout_width="50dp"
@@ -93,12 +116,16 @@ tools:context=".MainActivity">
             android:text="@string/rick_roullete"
             android:layout_marginStart="20dp"
             tools:ignore="NestedWeights" />
+
+        <!--Fav songs/Help section-->
         <LinearLayout
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center_vertical">
+
+            <!--Fav songs-->
             <TextView
                 android:id="@+id/textView3"
                 android:gravity="right"
@@ -110,6 +137,8 @@ tools:context=".MainActivity">
                 android:text="@string/our_songs"
                 android:layout_marginBottom="10dp"
                 tools:ignore="RtlHardcoded" />
+
+            <!--Help-->
             <TextView
                 android:id="@+id/textView4"
                 android:gravity="right"
@@ -122,8 +151,11 @@ tools:context=".MainActivity">
                 tools:ignore="RtlHardcoded" />
         </LinearLayout>
     </LinearLayout>
+    <!--Bottom bar [end]-->
 </LinearLayout>
+    <!--Top section [end]-->
 
+    <!--Recycler view [start]-->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -133,6 +165,7 @@ tools:context=".MainActivity">
         app:layout_constraintTop_toBottomOf="@id/MenuBar"
         android:id="@+id/recyclerView"
         android:scrollbars="vertical"/>
+    <!--Recycler view [end]-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
