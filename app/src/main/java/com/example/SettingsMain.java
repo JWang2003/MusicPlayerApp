@@ -2,6 +2,7 @@ package com.example;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.content.SharedPreferences;
 import android.widget.AdapterView;
@@ -33,13 +34,13 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt("rickrollodds", rickrollOdds);
-        if (!(pfp == 0)) {
+        if (pfp != 0) {
             editor.putInt("PFP", pfp);
         }
-        if (!(theme == 0)) {
+        if (theme != 0) {
             editor.putInt("Theme", theme);
         }
-        if (!(theme == 0)) {
+        if (flag != 0) {
             editor.putInt("Flag", flag);
         }
         // Commit the edits!
@@ -66,7 +67,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         mConstraintLayout = findViewById(R.id.settingsscreen);
 
         if (theme != 0) {
-            mConstraintLayout.setBackgroundColor(theme);
+            applyChanges();
         } else {
             mConstraintLayout.setBackgroundColor(R.drawable.gradientbackgroundred);
         }
@@ -85,6 +86,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         apply.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setSelections();
+                applyChanges();
             }
         });
 
@@ -152,31 +154,42 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case "Johnson":
                 pfp = R.drawable.pfp_johnson;
-
                 break;
             case "Biden":
                 pfp = R.drawable.pfp_biden;
-
                 break;
         }
         switch (themeSelection) {
             case "China":
-                theme = R.drawable.gradientbackgroundred;
+                theme = 1;
                 flag = R.drawable.flag_china;
                 break;
             case "Canada":
                 System.out.println("Selected Canada");
-                theme = R.drawable.gradientbackgroundred;
+                theme = 1;
                 flag = R.drawable.flag_canada;
                 break;
             case "UK":
-                theme = R.drawable.gradientbackgroundblue;
+                theme = 2;
                 flag = R.drawable.flag_uk;
                 break;
             case "USA":
-                theme = R.drawable.gradientbackgroundblue;
+                theme = 2;
                 flag = R.drawable.flag_usa;
                 break;
+        }
+    }
+
+    void applyChanges(){
+        if (theme != 0) {
+            switch(theme){
+                case 1:
+                    mConstraintLayout.setBackground(ContextCompat.getDrawable(SettingsMain.this, R.drawable.gradientbackgroundred));
+                    break;
+                case 2:
+                    mConstraintLayout.setBackground(ContextCompat.getDrawable(SettingsMain.this, R.drawable.gradientbackgroundblue));
+                    break;
+            }
         }
     }
 

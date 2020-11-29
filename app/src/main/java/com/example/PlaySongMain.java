@@ -1,6 +1,8 @@
 package com.example;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,9 +29,10 @@ public class PlaySongMain extends AppCompatActivity {
     ArrayList<Song> songs;
     int currentSongIndex;
     int rickrollOdds;
+    ConstraintLayout mConstraintLayout;
     //checks if Mp3 was playing before stop
     boolean isPlaying = false;
-
+    int theme;
     //Initialize mediaPlayer
     MediaPlayer mediaPlayer = null;
 
@@ -52,6 +55,18 @@ public class PlaySongMain extends AppCompatActivity {
         setContentView(R.layout.activity_play_song_main);
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         rickrollOdds = settings.getInt("rickrollOdds", 6);
+        theme = settings.getInt("Theme", 0);
+        mConstraintLayout = findViewById(R.id.songscreen);
+        if (!(theme == 0)){
+            switch(theme){
+                case 1:
+                    mConstraintLayout.setBackground(ContextCompat.getDrawable(PlaySongMain.this, R.drawable.gradientbackgroundred));
+                    break;
+                case 2:
+                    mConstraintLayout.setBackground(ContextCompat.getDrawable(PlaySongMain.this, R.drawable.gradientbackgroundblue));
+                    break;
+            }
+        }
         setupButtonHandlers();
         System.out.println(rickrollOdds);
 

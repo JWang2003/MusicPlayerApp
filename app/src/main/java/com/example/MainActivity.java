@@ -2,6 +2,7 @@ package com.example;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         pfp = settings.getInt("PFP", 0);
         theme = settings.getInt("Theme", 0);
         flag = settings.getInt("Flag", 0);
-
         populateDataModel();
         connectXMLViews();
         setUpGridLayout();
@@ -134,19 +134,24 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 
         if (pfp != 0) {
             pfpDisplay.setImageResource(pfp);
-            editor.putInt("PFP", R.drawable.pfp_xi);
         } else {
             pfpDisplay.setImageResource(R.drawable.pfp_xi);
         }
         if (theme != 0) {
-            mConstraintLayout.setBackgroundColor(theme);
-            editor.putInt("Theme", R.drawable.gradientbackgroundred);
-        } else {
-            mConstraintLayout.setBackgroundColor(R.drawable.gradientbackgroundred);
+            switch(theme){
+                case 1:
+                    mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundred));
+                    break;
+                case 2:
+                    mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundblue));
+                    break;
+                default:
+                    System.out.println("Default background colour");
+                    mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundred));
+            }
         }
         if (flag != 0) {
             flagView.setImageResource(flag);
-            editor.putInt("Flag", R.drawable.flag_china);
         } else {
             flagView.setImageResource(R.drawable.flag_china);
         }
