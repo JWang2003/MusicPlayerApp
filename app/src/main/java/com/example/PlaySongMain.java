@@ -29,8 +29,6 @@ public class PlaySongMain extends AppCompatActivity {
     //checks if Mp3 was playing before stop
     boolean isPlaying = false;
 
-
-
     //Initialize mediaPlayer
     MediaPlayer mediaPlayer = null;
 
@@ -47,7 +45,6 @@ public class PlaySongMain extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +53,6 @@ public class PlaySongMain extends AppCompatActivity {
 
         // Process the extra information from intent
         getIncomingIntent();
-
-
     }
 
     private void getIncomingIntent() {
@@ -97,8 +92,8 @@ public class PlaySongMain extends AppCompatActivity {
                 isPlaying = false;
             }
         });
-        //Top Bar [end]
 
+        //Top Bar [end]
         //Song control buttons [Start]
         //PausePlay Button
         final ImageButton pauseplayButton = findViewById(R.id.pauseplay);
