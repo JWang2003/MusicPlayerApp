@@ -1,6 +1,7 @@
 package com.example;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.SharedPreferences;
 import android.widget.AdapterView;
@@ -16,9 +17,13 @@ import android.widget.TextView;
 public class SettingsMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     SeekBar rickrollChanceSlider;
     TextView rickrollOddsDisplay;
+    ConstraintLayout mConstraintLayout;
     int rickrollOdds;
-    String pfpSelection = "Xi";
-    String themeSelection = "China";
+    String pfpSelection;
+    String themeSelection;
+    int pfp;
+    int theme;
+    int flag;
 
     @Override
     protected void onStop(){
@@ -28,8 +33,9 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt("rickrollOdds", rickrollOdds);
-        editor.putString("PFP", pfpSelection);
-        editor.putString("Theme", themeSelection);
+        editor.putInt("PFP", pfp);
+        editor.putInt("Theme", theme);
+        editor.putInt("Flag", flag);
         // Commit the edits!
         editor.commit();
     }
@@ -40,11 +46,19 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         // Restore preferences
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         rickrollOdds = settings.getInt("rickrollOdds", 6);
+
         // This checks if page is not null aka, page is being reloaded
         setContentView(R.layout.settings_main);
         System.out.println(rickrollOdds);
         // Go back to mainactivity
+        System.out.println("pfp: "+ pfp);
+
+        // Connect to XML
         Button back = findViewById(R.id.back);
+        mConstraintLayout = findViewById(R.id.settingsscreen);
+        mConstraintLayout.setBackgroundColor(theme);
+
+        // Set up back button
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(SettingsMain.this, MainActivity.class);
@@ -58,30 +72,32 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View v) {
                 switch (pfpSelection) {
                     case "Xi":
-                        // TODO: set profile picture in activity_main.xml
+                        pfp = R.drawable.pfp_xi;
                         break;
                     case "Trudeau":
-
+                        pfp = R.drawable.pfp_trudeau;
                         break;
                     case "Johnson":
+                        pfp = R.drawable.pfp_johnson;
 
                         break;
                     case "Biden":
+                        pfp = R.drawable.pfp_biden;
 
                         break;
                 }
                 switch (themeSelection) {
                     case "China":
-                        // TODO: edit backgrounds of all 3 xml files
+                        theme = R.drawable.gradientbackgroundred;
                         break;
                     case "Canada":
-
+                        theme = R.drawable.gradientbackgroundred;
                         break;
                     case "UK":
-
+                        theme = R.drawable.gradientbackgroundblue;
                         break;
                     case "USA":
-
+                        theme = R.drawable.gradientbackgroundblue;
                         break;
                 }
 

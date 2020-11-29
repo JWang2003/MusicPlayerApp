@@ -1,6 +1,7 @@
 package com.example;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import java.util.Random;
 import android.os.Parcelable;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     RecyclerView songsRecyclerView;
     SearchView searchView;
     ImageView pfpDisplay;
+    ConstraintLayout mConstraintLayout;
 
     // Properties
     Playlist playlist = new Playlist();
@@ -37,11 +40,20 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     boolean rickrollModeEnabled = false;
     ImageButton rickrollButton;
     TextView settings;
+    int pfp;
+    int theme;
+    int flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Get the shared settings for profile picture and theme
+        SharedPreferences settings = getSharedPreferences("Settings", this.MODE_PRIVATE);
+        pfp = settings.getInt("PFP", 0);
+        theme = settings.getInt("Theme", 0);
+        flag = settings.getInt("Flag", 0);
+
 
         populateDataModel();
         connectXMLViews();
@@ -49,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 //        setUpButtonHandlers();
         absolutePlaylist = new ArrayList<>(playlist.songs);
     }
-
-
 
 
     // Initializing Song instances
@@ -117,6 +127,9 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         settings = findViewById(R.id.settings);
         pfpDisplay = findViewById(R.id.pfpDisplay);
         searchView = findViewById(R.id.search_bar);
+        mConstraintLayout = findViewById(R.id.main);
+
+        pfpDisplay.setImageResource(pfp);
 
         searchView.setOnClickListener(new SearchView.OnClickListener() {
             @Override
