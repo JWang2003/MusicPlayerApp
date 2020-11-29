@@ -61,9 +61,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         playlist.songs = new ArrayList<>();
         // ^ Used to be <Songs> instead of <>
 
-
         // Create & initialize first song
-
 
         Song song = new Song ("Happy Rock", "bensound.com",
                 R.drawable.happyrock, R.raw.happyrock);
@@ -225,19 +223,6 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         startActivity(intent);
     }
 
-    // function has since moved to PlaySongMain.java
-//    boolean determineRickrollState() {
-//        Bundle extras = getIntent().getExtras();
-//        int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
-//        Random r = new Random();
-//        int randInt = r.nextInt(upperLimit);
-//        System.out.println(">>> The random integer generated was " + randInt);
-//        if (randInt == 0) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
 
     // this method was implemented from SongViewHolder
     @Override
