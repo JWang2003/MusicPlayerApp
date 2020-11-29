@@ -36,7 +36,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         // All objects are from android.context.Context
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("rickrollodds", rickrollOdds);
+        editor.putInt("rickrollOdds", rickrollOdds);
         if (pfp != 0) {
             editor.putInt("PFP", pfp);
         }
@@ -57,7 +57,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         // Restore preferences
         SharedPreferences settings = getSharedPreferences("Settings", 0);
-        rickrollOdds = settings.getInt("rickrollodds", 0);
+        rickrollOdds = settings.getInt("rickrollOdds", 1);
         pfp = settings.getInt("PFP", 0);
         theme = settings.getInt("Theme", 0);
         flag = settings.getInt("Flag", 0);
@@ -126,6 +126,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 rickrollOdds = progress + 1;
+                System.out.println("In settings, rickrollodds are :" + rickrollOdds);
                 rickrollOddsDisplay.setText("1 : " + rickrollOdds);
             }
 

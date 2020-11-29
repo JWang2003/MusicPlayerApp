@@ -84,6 +84,11 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         playlist.songs.add(song);
 
 
+        song = new Song("Summer", "bensound.com",
+                R.drawable.summer, R.raw.summer);
+        playlist.songs.add(song);
+
+
         song = new Song("Soviet March", "USSR",
                 R.drawable.march, R.raw.sovietmarch);
         playlist.songs.add(song);
@@ -98,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
                 R.drawable.china, R.raw.fanwei);
         playlist.songs.add(song);
 
+        song = new Song ("Going Higher", "bensound.com",
+                R.drawable.goinghigher, R.raw.goinghigher);
+        playlist.songs.add(song);
+
 
         song = new Song("Подмосковные вечера", "Василий Павлович Соловьёв-Седой",
                 R.drawable.ussr, R.raw.moscow);
@@ -106,6 +115,38 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         song = new Song("Scree", "Hana Domingo",
                 R.drawable.bee, R.raw.hanah);
         playlist.songs.add(song);
+
+        song = new Song("Suffering", "Hana Domingo",
+                R.drawable.ahyes, R.raw.ricksuffer);
+        playlist.songs.add(song);
+
+        song = new Song("Acoustic Breeze", "bensound.com",
+                R.drawable.acousticbreeze, R.raw.acousticbreeze);
+        // Add first song to to array of songs in the playlist
+        playlist.songs.add(song);
+
+
+        // Reusing song variable
+        song = new Song("A New Beginning", "bensound.com",
+                R.drawable.anewbeginning, R.raw.anewbeginning);
+        playlist.songs.add(song);
+
+
+        song = new Song("Creative Minds", "bensound.com",
+                R.drawable.creativeminds, R.raw.creativeminds);
+        playlist.songs.add(song);
+
+
+
+        song = new Song ("Happy Rock", "bensound.com",
+                R.drawable.happyrock, R.raw.happyrock);
+        playlist.songs.add(song);
+
+
+        song = new Song("Hey", "bensound.com",
+                R.drawable.hey, R.raw.hey);
+        playlist.songs.add(song);
+
 
     }
 
@@ -203,19 +244,19 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         startActivity(intent);
     }
 
-    boolean determineRickrollState() {
+    /*boolean determineRickrollState() {
 
         Bundle extras = getIntent().getExtras();
-        int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
-        Random r = new Random();
-        int randInt = r.nextInt(upperLimit);
+    int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
+    Random r = new Random();
+    int randInt = r.nextInt(upperLimit);
         System.out.println(">>> The random integer generated was " + randInt);
         if (randInt == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
+    } else {
+        return false;
     }
+}*/
 
 
 // This method was implemented from SongViewHolder

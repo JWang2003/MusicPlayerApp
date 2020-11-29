@@ -25,4 +25,6 @@
         <item>Johnson</item>
         <item>Biden</item>
     </string-array>
+    <string name="rickroll_artistname">Rick Astley</string>
+    <string name="rickroll_songname">Never Gonna Give You Up</string>
 </resources>
