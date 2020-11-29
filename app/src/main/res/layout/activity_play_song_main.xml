@@ -17,161 +17,168 @@
         android:padding="10dp">
 
         <!--back button-->
-        <Button
+        <ImageButton
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:background="@drawable/back"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            />
 
-
-        <Button
+        <ImageButton
             android:id="@+id/button8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="217dp"
-            android:text="Button" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/more" />
     </LinearLayout>
     <!--Top bar [end]-->
 
     <!--Song Image-->
-    <ImageView
-        android:id="@+id/songImage"
+    <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         android:scaleType="centerCrop"
+        app:cardCornerRadius="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ahyes"/>
-
-    <!--Song info [start]-->
-    <LinearLayout
-        android:id="@+id/TextViews"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="445dp"
-        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/songName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="47dp"
-            android:paddingRight="47dp"
-            android:text="Megalovania"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="39dp" />
+        <ImageView
+            android:id="@+id/songImage"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ahyes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/songWriter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:paddingLeft="47dp"
-            android:paddingRight="47dp"
-            android:text="Toby Fox"
-            android:textAlignment="center"
-            android:textColor="#7d7d7d"
-            android:textSize="25dp" />
+    <!--Song info [start]-->
 
-    </LinearLayout>
-    <!--Song info [end]-->
-
-    <!--Bottom section [start]-->
-    <LinearLayout
+    <TextView
+        android:id="@+id/songName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginTop="390dp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingLeft="47dp"
+        android:paddingRight="47dp"
+        android:text="Megalovania"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/songWriter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="47dp"
+        android:paddingRight="47dp"
+        android:text="Toby Fox"
+        android:textAlignment="center"
+        android:textColor="#7d7d7d"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/songName" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:layout_marginTop="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!--Bottom bar [start]-->
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|bottom"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
 
-            <!--Shuffle button-->
-            <ImageButton
-                android:id="@+id/shuffle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/shuffle"
-                android:backgroundTint="#FFFFFF" />
+        <!--Shuffle button-->
+        <ImageButton
+            android:id="@+id/shuffle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/shuffle"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <!--Prev button-->
-            <ImageButton
-                android:id="@+id/prev"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+        <!--Prev button-->
+        <ImageButton
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/pauseplay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/previous" />
 
-            <!--Play/Pause button-->
-            <ImageButton
-                android:id="@+id/pauseplay"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/play"
-                android:backgroundTint="#FFFCFC"
-                android:tint="#FFFFFF" />
+        <!--Play/Pause button-->
 
 
-            <!--Next button-->
-            <ImageButton
-                android:id="@+id/next"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_media_next" />
+        <!--Next button-->
 
-            <!--Loop button-->
-            <ImageButton
-                android:id="@+id/loop"
-                android:layout_width="0dp"
-                android:layout_height="51dp"
-                android:layout_weight="1"
-                app:srcCompat="@android:drawable/stat_notify_sync"
+        <!--Loop button-->
+        <ImageButton
+            android:id="@+id/pauseplay"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="@drawable/play"
+            android:backgroundTint="#FFFCFC"
+            android:tint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                />
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="110dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pauseplay"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/next" />
 
-        </LinearLayout>
-        <!--Bottom bar [end]-->
+        <ImageButton
+            android:id="@+id/loop"
+            android:layout_width="75dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/next"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/stat_notify_sync" />
 
-        <!--Lower margin [start]-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-
-            <!--Ask Hana-->
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </LinearLayout>
-        <!--Lower margin [end]-->
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <!--Lower section [end]-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
