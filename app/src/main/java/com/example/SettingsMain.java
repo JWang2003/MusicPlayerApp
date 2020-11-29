@@ -26,16 +26,22 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
     int flag;
 
     @Override
-    protected void onStop(){
-        super.onStop();
+    protected void onPause(){
+        super.onPause();
         // We need an Editor object to make preference changes.
         // All objects are from android.context.Context
         SharedPreferences settings = getSharedPreferences("Settings", 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("rickrollOdds", rickrollOdds);
-        editor.putInt("PFP", pfp);
-        editor.putInt("Theme", theme);
-        editor.putInt("Flag", flag);
+        editor.putInt("rickrollodds", rickrollOdds);
+        if (!(pfp == 0)) {
+            editor.putInt("PFP", pfp);
+        }
+        if (!(theme == 0)) {
+            editor.putInt("Theme", theme);
+        }
+        if (!(theme == 0)) {
+            editor.putInt("Flag", flag);
+        }
         // Commit the edits!
         editor.commit();
     }
@@ -45,8 +51,10 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         // Restore preferences
         SharedPreferences settings = getSharedPreferences("Settings", 0);
-        rickrollOdds = settings.getInt("rickrollOdds", 6);
-
+        rickrollOdds = settings.getInt("rickrollodds", 0);
+        pfp = settings.getInt("PFP", 0);
+        theme = settings.getInt("Theme", 0);
+        flag = settings.getInt("Flag", 0);
         // This checks if page is not null aka, page is being reloaded
         setContentView(R.layout.settings_main);
         System.out.println(rickrollOdds);
@@ -56,11 +64,17 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         // Connect to XML
         Button back = findViewById(R.id.back);
         mConstraintLayout = findViewById(R.id.settingsscreen);
-        mConstraintLayout.setBackgroundColor(theme);
+
+        if (theme != 0) {
+            mConstraintLayout.setBackgroundColor(theme);
+        } else {
+            mConstraintLayout.setBackgroundColor(R.drawable.gradientbackgroundred);
+        }
 
         // Set up back button
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                setSelections();
                 Intent intent = new Intent(SettingsMain.this, MainActivity.class);
                 intent.putExtra("EXTRA_RICKROLL_ODDS_UPPERLIMIT", rickrollOdds);
                 startActivity(intent);
@@ -70,41 +84,9 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         final Button apply = findViewById(R.id.applyButton);
         apply.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                switch (pfpSelection) {
-                    case "Xi":
-                        pfp = R.drawable.pfp_xi;
-                        break;
-                    case "Trudeau":
-                        pfp = R.drawable.pfp_trudeau;
-                        break;
-                    case "Johnson":
-                        pfp = R.drawable.pfp_johnson;
-
-                        break;
-                    case "Biden":
-                        pfp = R.drawable.pfp_biden;
-
-                        break;
-                }
-                switch (themeSelection) {
-                    case "China":
-                        theme = R.drawable.gradientbackgroundred;
-                        break;
-                    case "Canada":
-                        theme = R.drawable.gradientbackgroundred;
-                        break;
-                    case "UK":
-                        theme = R.drawable.gradientbackgroundblue;
-                        break;
-                    case "USA":
-                        theme = R.drawable.gradientbackgroundblue;
-                        break;
-                }
-
+                setSelections();
             }
         });
-
-
 
 
         // FLAG THEME SELECTION SPINNER
@@ -159,5 +141,44 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
+
+    void setSelections(){
+        switch (pfpSelection) {
+            case "Xi":
+                pfp = R.drawable.pfp_xi;
+                break;
+            case "Trudeau":
+                pfp = R.drawable.pfp_trudeau;
+                break;
+            case "Johnson":
+                pfp = R.drawable.pfp_johnson;
+
+                break;
+            case "Biden":
+                pfp = R.drawable.pfp_biden;
+
+                break;
+        }
+        switch (themeSelection) {
+            case "China":
+                theme = R.drawable.gradientbackgroundred;
+                flag = R.drawable.flag_china;
+                break;
+            case "Canada":
+                System.out.println("Selected Canada");
+                theme = R.drawable.gradientbackgroundred;
+                flag = R.drawable.flag_canada;
+                break;
+            case "UK":
+                theme = R.drawable.gradientbackgroundblue;
+                flag = R.drawable.flag_uk;
+                break;
+            case "USA":
+                theme = R.drawable.gradientbackgroundblue;
+                flag = R.drawable.flag_usa;
+                break;
+        }
+    }
+
 
 }

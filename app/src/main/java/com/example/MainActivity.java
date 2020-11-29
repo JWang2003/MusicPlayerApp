@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     SearchView searchView;
     ImageView pfpDisplay;
     ConstraintLayout mConstraintLayout;
+    ImageView flagView;
 
     // Properties
     Playlist playlist = new Playlist();
@@ -49,11 +50,10 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Get the shared settings for profile picture and theme
-        SharedPreferences settings = getSharedPreferences("Settings", this.MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
         pfp = settings.getInt("PFP", 0);
         theme = settings.getInt("Theme", 0);
         flag = settings.getInt("Flag", 0);
-
 
         populateDataModel();
         connectXMLViews();
@@ -128,8 +128,29 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         pfpDisplay = findViewById(R.id.pfpDisplay);
         searchView = findViewById(R.id.search_bar);
         mConstraintLayout = findViewById(R.id.main);
+        flagView = findViewById(R.id.bgFlagView);
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        SharedPreferences.Editor editor = settings.edit();
 
-        pfpDisplay.setImageResource(pfp);
+        if (pfp != 0) {
+            pfpDisplay.setImageResource(pfp);
+            editor.putInt("PFP", R.drawable.pfp_xi);
+        } else {
+            pfpDisplay.setImageResource(R.drawable.pfp_xi);
+        }
+        if (theme != 0) {
+            mConstraintLayout.setBackgroundColor(theme);
+            editor.putInt("Theme", R.drawable.gradientbackgroundred);
+        } else {
+            mConstraintLayout.setBackgroundColor(R.drawable.gradientbackgroundred);
+        }
+        if (flag != 0) {
+            flagView.setImageResource(flag);
+            editor.putInt("Flag", R.drawable.flag_china);
+        } else {
+            flagView.setImageResource(R.drawable.flag_china);
+        }
+        editor.commit();
 
         searchView.setOnClickListener(new SearchView.OnClickListener() {
             @Override
