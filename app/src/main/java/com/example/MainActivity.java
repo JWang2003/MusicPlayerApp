@@ -98,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
                 R.drawable.summer, R.raw.summer);
         playlist.songs.add(song);
 
+        song = new Song("Suffering", "Hana Domino",
+                R.drawable.ahyes, R.raw.ricksuffer);
+        playlist.songs.add(song);
+
     }
 
 //   Set up recycler view with gridlayout
@@ -165,19 +169,19 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         startActivity(intent);
     }
 
-    boolean determineRickrollState() {
+    /*boolean determineRickrollState() {
 
         Bundle extras = getIntent().getExtras();
-        int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
-        Random r = new Random();
-        int randInt = r.nextInt(upperLimit);
+    int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
+    Random r = new Random();
+    int randInt = r.nextInt(upperLimit);
         System.out.println(">>> The random integer generated was " + randInt);
         if (randInt == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
+    } else {
+        return false;
     }
+}*/
 
 
 // This method was implemented from SongViewHolder
