@@ -19,17 +19,17 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
     int rickrollOdds;
     String pfpSelection = "Xi";
     String themeSelection = "China";
-    public static final String PREFS_NAME = "MyPrefsFile";
 
     @Override
     protected void onStop(){
         super.onStop();
-
         // We need an Editor object to make preference changes.
         // All objects are from android.context.Context
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt("rickrollOdds", rickrollOdds);
+        editor.putString("PFP", pfpSelection);
+        editor.putString("Theme", themeSelection);
         // Commit the edits!
         editor.commit();
     }
@@ -38,7 +38,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Restore preferences
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
         rickrollOdds = settings.getInt("rickrollOdds", 6);
         // This checks if page is not null aka, page is being reloaded
         setContentView(R.layout.settings_main);
