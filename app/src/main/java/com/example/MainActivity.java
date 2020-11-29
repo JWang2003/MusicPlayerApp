@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     // XML Views
     RecyclerView songsRecyclerView;
     SearchView searchView;
+    ImageView pfpDisplay;
 
     // Properties
     Playlist playlist = new Playlist();
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     SongAdapter songAdapter;
     boolean rickrollModeEnabled = false;
     ImageButton rickrollButton;
+    TextView settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,11 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         populateDataModel();
         connectXMLViews();
         setUpGridLayout();
-        setUpButtonHandlers();
+//        setUpButtonHandlers();
         absolutePlaylist = new ArrayList<>(playlist.songs);
     }
+
+
 
 
     // Initializing Song instances
@@ -110,6 +114,8 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     void connectXMLViews() {
         songsRecyclerView = findViewById(R.id.recyclerView);
         rickrollButton = findViewById(R.id.rickroll);
+        settings = findViewById(R.id.settings);
+        pfpDisplay = findViewById(R.id.pfpDisplay);
         searchView = findViewById(R.id.search_bar);
 
         searchView.setOnClickListener(new SearchView.OnClickListener() {
@@ -135,21 +141,34 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
                 return true;
             }
         });
+
     }
 
     void setUpButtonHandlers() {
         rickrollButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            rickrollModeEnabled = true;
-            System.out.println(">>> Rickroll mode enabled (forever)!");
+            if (!rickrollModeEnabled) {
+                rickrollModeEnabled = true;
+                System.out.println(">>> Rickroll mode enabled!");
+            } else {
+                rickrollModeEnabled = false;
+                System.out.println(">>> Rickroll mode disabled!");
+                }
             }
         });
     }
 
+    public void onClickSettings(View view) {
+        System.out.println("Clicked settings");
+        Intent intent = new Intent(this, SettingsMain.class);
+        startActivity(intent);
+    }
+
     boolean determineRickrollState() {
 
-        int upperLimit = 6;             // temporary constant in absence of user input
+        Bundle extras = getIntent().getExtras();
+        int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
         Random r = new Random();
         int randInt = r.nextInt(upperLimit);
         System.out.println(">>> The random integer generated was " + randInt);
@@ -174,4 +193,5 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         startActivity(intent);
 
     }
+
 }

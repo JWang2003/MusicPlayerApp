@@ -35,7 +35,6 @@ public class PlaySongMain extends AppCompatActivity {
     MediaPlayer mediaPlayer = null;
 
 
-
     //Displays currentSong when switching songs
     private void displayCurrentSong() {
         currentSong = songs.get(currentSongIndex);
@@ -94,6 +93,7 @@ public class PlaySongMain extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PlaySongMain.this, MainActivity.class);
                 startActivity(intent);
+                songOver();
                 isPlaying = false;
             }
         });
@@ -291,8 +291,6 @@ public class PlaySongMain extends AppCompatActivity {
         }
     }
 
-
-
     // Function that stops current song and completely destroys current media player
     void songOver() {
         mediaPlayer.stop();
@@ -300,6 +298,5 @@ public class PlaySongMain extends AppCompatActivity {
         mediaPlayer.release();
         mediaPlayer = null;
     }
-
 
 }
