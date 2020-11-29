@@ -6,17 +6,12 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.R;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -43,7 +38,6 @@ public class PlaySongMain extends AppCompatActivity {
     //Initialize mediaPlayer
     MediaPlayer mediaPlayer = null;
 
-
     //Stops song when song is at the end
     void  mediaCompleteListener() {
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -57,6 +51,8 @@ public class PlaySongMain extends AppCompatActivity {
     }
 
 
+
+
     //Displays currentSong when switching songs
     private void displayCurrentSong() {
         currentSong = songs.get(currentSongIndex);
@@ -67,7 +63,6 @@ public class PlaySongMain extends AppCompatActivity {
         ImageView image = findViewById(R.id.songImage);
         image.setImageResource(currentSong.imageResource);
     }
-
 
     //COMMENT OUT WHEN WANT TO SHOW REGULAR SONG INFO DURING RICKROLL
     /*void displayRickRoll() {

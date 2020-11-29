@@ -16,18 +16,21 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="10dp">
 
-        <Button
+        <ImageButton
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:background="@drawable/back"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/applyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="217dp"
-            android:text="Apply" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/apply" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/firstsetting"
@@ -96,7 +99,7 @@
                 android:layout_height="match_parent"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
-                android:text="1 : 6"/>
+                android:text="1 : 1"/>
         </LinearLayout>
         <SeekBar
             android:id="@+id/rickrollOddsSlider"

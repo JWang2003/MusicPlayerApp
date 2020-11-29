@@ -7,27 +7,28 @@ import androidx.core.content.ContextCompat;
 import android.content.SharedPreferences;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 public class SettingsMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     SeekBar rickrollChanceSlider;
     TextView rickrollOddsDisplay;
     ConstraintLayout mConstraintLayout;
+    // Default values to use initially
+    // Otherwise the app bugs out on first launch
     int rickrollOdds = 1;
-    String pfpSelection;
-    String themeSelection;
-    int pfpSelectionIndex;
-    int themeSelectionIndex;
-    int pfp;
-    int theme;
-    int flag;
+    String pfpSelection = "Xi";
+    String themeSelection = "China";
+    int pfpSelectionIndex = 0;
+    int themeSelectionIndex = 0;
+    int pfp = R.drawable.pfp_xi;
+    int theme = 1; // red gradient
+    int flag = R.drawable.flag_china;
 
     @Override
     protected void onPause(){
@@ -71,7 +72,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         System.out.println("pfp: "+ pfp);
 
         // Connect to XML
-        Button back = findViewById(R.id.back);
+        ImageButton back = findViewById(R.id.back);
         mConstraintLayout = findViewById(R.id.settingsscreen);
 
         if (theme != 0) {
@@ -90,7 +91,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        final Button apply = findViewById(R.id.applyButton);
+        final ImageButton apply = findViewById(R.id.applyButton);
         apply.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setSelections();

@@ -30,7 +30,7 @@
             android:id="@+id/button8"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="310dp"
+            android:layout_marginLeft="300dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/more" />
     </LinearLayout>
@@ -63,15 +63,18 @@
     <TextView
         android:id="@+id/songName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="390dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="430dp"
         android:fontFamily="sans-serif-medium"
         android:paddingLeft="47dp"
         android:paddingRight="47dp"
         android:text="Megalovania"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="36dp"
+        app:autoSizeMaxTextSize="36sp"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +82,7 @@
     <TextView
         android:id="@+id/songWriter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_marginTop="5dp"
         android:fontFamily="sans-serif"
         android:paddingLeft="47dp"
@@ -167,16 +170,16 @@
 
         <ImageButton
             android:id="@+id/loop"
-            android:layout_width="75dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="-10dp"
             android:layout_weight="1"
-            android:background="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/next"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/stat_notify_sync" />
+            android:background="@drawable/set_loop_on"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

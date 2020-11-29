@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -12,19 +11,11 @@ import java.util.ArrayList;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import java.util.Random;
-import android.os.Parcelable;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-
-import com.example.R;
-import com.example.Playlist;
-import com.example.Song;
-import com.example.SongAdapter;
 
 public class MainActivity extends AppCompatActivity implements SongViewHolder.OnNoteListener {
 
@@ -72,41 +63,54 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 
 
         // Create & initialize first song
-        Song song = new Song("Севастопольский вальс", "Ансамбль Александрова",
+
+
+        Song song = new Song ("Happy Rock", "bensound.com",
+                R.drawable.happyrock, R.raw.happyrock);
+        playlist.songs.add(song);
+
+        song = new Song("Севастопольский вальс", "Ансамбль Александрова",
                 R.drawable.redarmy, R.raw.sevastop);
         // Add first song to to array of songs in the playlist
         playlist.songs.add(song);
 
+        song = new Song("A New Beginning", "bensound.com",
+                R.drawable.anewbeginning, R.raw.anewbeginning);
+        playlist.songs.add(song);
+
+        song = new Song("Summer", "bensound.com",
+                R.drawable.summer, R.raw.summer);
+        playlist.songs.add(song);
 
         // Reusing song variable
         song = new Song("中华人民共和国国歌", "田汉",
                 R.drawable.anthem, R.raw.fanwei);
         playlist.songs.add(song);
 
-
-        song = new Song("Summer", "bensound.com",
-                R.drawable.summer, R.raw.summer);
-        playlist.songs.add(song);
-
-
         song = new Song("Soviet March", "USSR",
                 R.drawable.march, R.raw.sovietmarch);
         playlist.songs.add(song);
 
-
         song = new Song ("Das Einheitsfrontlied", "Deutsche Demokratische Republik",
                 R.drawable.ddr, R.raw.einheits);
-        playlist.songs.add(song);
-
-
-        song = new Song ("义勇军进行曲", "孙师毅、聂耳",
-                R.drawable.china, R.raw.fanwei);
         playlist.songs.add(song);
 
         song = new Song ("Going Higher", "bensound.com",
                 R.drawable.goinghigher, R.raw.goinghigher);
         playlist.songs.add(song);
 
+        song = new Song ("义勇军进行曲", "孙师毅、聂耳",
+                R.drawable.china, R.raw.fanwei);
+        playlist.songs.add(song);
+
+        song = new Song("Suffering", "Hana Domingo",
+                R.drawable.ahyes, R.raw.ricksuffer);
+        playlist.songs.add(song);
+
+        // Reusing song variable
+        song = new Song("Creative Minds", "bensound.com",
+                R.drawable.creativeminds, R.raw.creativeminds);
+        playlist.songs.add(song);
 
         song = new Song("Подмосковные вечера", "Василий Павлович Соловьёв-Седой",
                 R.drawable.ussr, R.raw.moscow);
@@ -116,38 +120,14 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
                 R.drawable.bee, R.raw.hanah);
         playlist.songs.add(song);
 
-        song = new Song("Suffering", "Hana Domingo",
-                R.drawable.ahyes, R.raw.ricksuffer);
-        playlist.songs.add(song);
-
         song = new Song("Acoustic Breeze", "bensound.com",
                 R.drawable.acousticbreeze, R.raw.acousticbreeze);
         // Add first song to to array of songs in the playlist
         playlist.songs.add(song);
 
-
-        // Reusing song variable
-        song = new Song("A New Beginning", "bensound.com",
-                R.drawable.anewbeginning, R.raw.anewbeginning);
-        playlist.songs.add(song);
-
-
-        song = new Song("Creative Minds", "bensound.com",
-                R.drawable.creativeminds, R.raw.creativeminds);
-        playlist.songs.add(song);
-
-
-
-        song = new Song ("Happy Rock", "bensound.com",
-                R.drawable.happyrock, R.raw.happyrock);
-        playlist.songs.add(song);
-
-
         song = new Song("Hey", "bensound.com",
                 R.drawable.hey, R.raw.hey);
         playlist.songs.add(song);
-
-
     }
 
 //   Set up recycler view with gridlayout
@@ -201,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
             @Override
             public void onClick(View v) {
                 searchView.clearFocus();
+                System.out.println("SearchView registered press");
             }
         });
 
@@ -220,23 +201,23 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
                 return true;
             }
         });
-
     }
 
-    void setUpButtonHandlers() {
-        rickrollButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (!rickrollModeEnabled) {
-                rickrollModeEnabled = true;
-                System.out.println(">>> Rickroll mode enabled!");
-            } else {
-                rickrollModeEnabled = false;
-                System.out.println(">>> Rickroll mode disabled!");
-                }
-            }
-        });
-    }
+    // feature to disable rickroll mode was removed
+//    void setUpButtonHandlers() {
+//        rickrollButton.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            if (!rickrollModeEnabled) {
+//                rickrollModeEnabled = true;
+//                System.out.println(">>> Rickroll mode enabled!");
+//            } else {
+//                rickrollModeEnabled = false;
+//                System.out.println(">>> Rickroll mode disabled!");
+//                }
+//            }
+//        });
+//    }
 
     public void onClickSettings(View view) {
         System.out.println("Clicked settings");
@@ -244,22 +225,21 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         startActivity(intent);
     }
 
-    /*boolean determineRickrollState() {
+    // function has since moved to PlaySongMain.java
+//    boolean determineRickrollState() {
+//        Bundle extras = getIntent().getExtras();
+//        int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
+//        Random r = new Random();
+//        int randInt = r.nextInt(upperLimit);
+//        System.out.println(">>> The random integer generated was " + randInt);
+//        if (randInt == 0) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
-        Bundle extras = getIntent().getExtras();
-    int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
-    Random r = new Random();
-    int randInt = r.nextInt(upperLimit);
-        System.out.println(">>> The random integer generated was " + randInt);
-        if (randInt == 0) {
-        return true;
-    } else {
-        return false;
-    }
-}*/
-
-
-// This method was implemented from SongViewHolder
+    // this method was implemented from SongViewHolder
     @Override
     public void onNoteClick(int position) {
         // Navigate to PlaySongMain with current song
@@ -270,7 +250,5 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         intent.putParcelableArrayListExtra("Playlist", absolutePlaylist);
         intent.putExtra("Index", indexOfCurrentSong);
         startActivity(intent);
-
     }
-
 }
