@@ -1,45 +1,48 @@
 package com.example;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.R;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.example.R.id.countrySpinner;
-import static com.example.R.id.pfpSpinner;
-import static com.example.R.id.textView;
 
 public class SettingsMain extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     SeekBar rickrollChanceSlider;
     TextView rickrollOddsDisplay;
-    int rickrollOdds = 6;
+    int rickrollOdds;
     String pfpSelection = "Xi";
     String themeSelection = "China";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Created oncreate");
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_main);
+    protected void onStop(){
+        super.onStop();
+        // We need an Editor object to make preference changes.
+        // All objects are from android.context.Context
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("rickrollOdds", rickrollOdds);
+        editor.putString("PFP", pfpSelection);
+        editor.putString("Theme", themeSelection);
+        // Commit the edits!
+        editor.commit();
+    }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Restore preferences
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        rickrollOdds = settings.getInt("rickrollOdds", 6);
+        // This checks if page is not null aka, page is being reloaded
+        setContentView(R.layout.settings_main);
+        System.out.println(rickrollOdds);
         // Go back to mainactivity
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +108,8 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         // RICKROLL CHANCE SEEK BAR
         rickrollOddsDisplay = (TextView) findViewById(R.id.rickrollOddsDisplay);
         rickrollChanceSlider = (SeekBar) findViewById(R.id.rickrollOddsSlider);
+        rickrollChanceSlider.setProgress(rickrollOdds -1);
+        rickrollOddsDisplay.setText("1 : " + rickrollOdds);
         rickrollChanceSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -120,6 +125,7 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         });
 
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

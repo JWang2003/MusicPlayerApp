@@ -3,6 +3,7 @@ package com.example;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -25,11 +26,9 @@ public class PlaySongMain extends AppCompatActivity {
     Song currentSong;
     ArrayList<Song> songs;
     int currentSongIndex;
-
+    int rickrollOdds;
     //checks if Mp3 was playing before stop
     boolean isPlaying = false;
-
-
 
     //Initialize mediaPlayer
     MediaPlayer mediaPlayer = null;
@@ -47,17 +46,17 @@ public class PlaySongMain extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_song_main);
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        rickrollOdds = settings.getInt("rickrollOdds", 6);
         setupButtonHandlers();
+        System.out.println(rickrollOdds);
 
         // Process the extra information from intent
         getIncomingIntent();
-
-
     }
 
     private void getIncomingIntent() {
@@ -97,8 +96,8 @@ public class PlaySongMain extends AppCompatActivity {
                 isPlaying = false;
             }
         });
-        //Top Bar [end]
 
+        //Top Bar [end]
         //Song control buttons [Start]
         //PausePlay Button
         final ImageButton pauseplayButton = findViewById(R.id.pauseplay);
@@ -293,10 +292,12 @@ public class PlaySongMain extends AppCompatActivity {
 
     // Function that stops current song and completely destroys current media player
     void songOver() {
-        mediaPlayer.stop();
-        mediaPlayer.reset();
-        mediaPlayer.release();
-        mediaPlayer = null;
+        if (!(mediaPlayer == null)) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 
 }
