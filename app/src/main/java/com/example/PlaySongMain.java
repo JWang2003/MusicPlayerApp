@@ -102,7 +102,7 @@ public class PlaySongMain extends AppCompatActivity {
     void setupButtonHandlers() {
         //Top bar [Start]
         //Back Button
-        Button back = findViewById(R.id.back);
+        ImageButton back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(PlaySongMain.this, MainActivity.class);

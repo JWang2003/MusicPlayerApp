@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:background="@drawable/gradientbackgroundred"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@drawable/gradientbackgroundred"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
 
     <!--Background [start]-->
@@ -29,18 +29,15 @@ tools:context=".MainActivity">
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-
         android:id="@+id/MenuBar">
 
         <!--Top bar-->
         <LinearLayout
-            android:background="@drawable/header_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
-            android:paddingBottom="10dp"
             android:paddingRight="30dp">
 
             <!--Home text-->
@@ -67,107 +64,120 @@ tools:context=".MainActivity">
         </LinearLayout>
         <!--Top section [end]-->
 
-    <!-- Middle bar [start]-->
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:padding="5dp"
-        android:orientation="horizontal">
-
-        <!--Welcome text-->
-
-        <!--User pfp-->
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="384dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="end"
-            android:text="@string/welcome"
-            android:textColor="#ffffff"
-            android:textSize="25sp" />
-
-        <ImageView
-            android:id="@+id/pfpDisplay"
-            android:layout_width="150dp"
-            android:layout_height="47dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/pfp_xi" />
-    </LinearLayout>
-    <!--Middle bar [end]-->
-
-
-    <!--Bottom bar [start]-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp"
-        android:id="@+id/bottomMenuBar"
-        android:layout_marginBottom="20dp">
-
-        <!--Rickroullette button-->
-        <ImageButton
-            android:id="@+id/rickroll"
-            android:layout_width="30dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:background="@drawable/agony"
-            android:text="@string/rick_roullete"
-            android:layout_marginStart="40dp"
-            tools:ignore="NestedWeights" />
-
-        <!--Fav songs/Help section-->
+        <!-- Middle bar [start]-->
         <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center_vertical">
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <!--Fav songs-->
+            <!--Welcome text-->
             <TextView
-                android:id="@+id/textView3"
-                android:gravity="right"
-                android:layout_width="match_parent"
+                android:id="@+id/textView"
+                android:layout_width="384dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="end"
+                android:text="Welcome  "
+                android:textAlignment="viewEnd"
                 android:textColor="#ffffff"
-                android:layout_marginRight="40dp"
-                android:textSize="20sp"
-                android:text="@string/our_songs"
-                android:layout_marginBottom="10dp"
-                tools:ignore="RtlHardcoded" />
+                android:textSize="25sp"
+                android:layout_marginRight="25dp"
+                />
 
-            <!--Help-->
-            <TextView
-                android:id="@+id/settings"
-                android:onClick="onClickSettings"
-                android:clickable="true"
-                android:gravity="right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:layout_marginRight="40dp"
-                android:textSize="20sp"
-                android:text="@string/settings"
-                tools:ignore="RtlHardcoded" />
+            <!--User pfp-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="47dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="40dp"
+                app:cardCornerRadius="15dp">
+
+                <ImageView
+                    android:id="@+id/pfpDisplay"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/pfp_xi" />
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
+        <!--Middle bar [end]-->
+
+
+        <!--Bottom bar [start]-->
+        <LinearLayout
+            android:id="@+id/bottomMenuBar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!--Rickroullette button-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="70dp"
+                android:layout_weight="1"
+                android:elevation="10dp"
+                app:cardCornerRadius="15dp">
+
+                <ImageButton
+                    android:id="@+id/rickroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/agony"
+                    android:text="@string/rick_roullete"
+                    tools:ignore="NestedWeights" />
+            </androidx.cardview.widget.CardView>
+
+            <!--Fav songs/Help section-->
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="85dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <!--Fav songs-->
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="right"
+                    android:text="@string/our_songs"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    tools:ignore="RtlHardcoded" />
+
+                <!--Help-->
+                <TextView
+                    android:id="@+id/settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:clickable="true"
+                    android:gravity="right"
+                    android:onClick="onClickSettings"
+                    android:text="@string/settings"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    tools:ignore="RtlHardcoded" />
+            </LinearLayout>
+        </LinearLayout>
+        <!--Bottom bar [end]-->
     </LinearLayout>
-    <!--Bottom bar [end]-->
-</LinearLayout>
     <!--Top section [end]-->
 
     <!--Recycler view [start]-->
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="15dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"

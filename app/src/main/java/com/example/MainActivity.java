@@ -72,40 +72,39 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 
 
         // Create & initialize first song
-        Song song = new Song("Acoustic Breeze", "bensound.com",
-                R.drawable.acousticbreeze, R.raw.acousticbreeze);
+        Song song = new Song("Севастопольский вальс", "Ансамбль Александрова",
+                R.drawable.redarmy, R.raw.sevastop);
         // Add first song to to array of songs in the playlist
         playlist.songs.add(song);
 
 
         // Reusing song variable
-        song = new Song("A New Beginning", "bensound.com",
-                R.drawable.anewbeginning, R.raw.anewbeginning);
+        song = new Song("中华人民共和国国歌", "田汉",
+                R.drawable.anthem, R.raw.fanwei);
         playlist.songs.add(song);
 
 
-        song = new Song("Creative Minds", "bensound.com",
-                R.drawable.creativeminds, R.raw.creativeminds);
+        song = new Song("Soviet March", "USSR",
+                R.drawable.march, R.raw.sovietmarch);
         playlist.songs.add(song);
 
 
-        song = new Song ("Going Higher", "bensound.com",
-                R.drawable.goinghigher, R.raw.goinghigher);
+        song = new Song ("Das Einheitsfrontlied", "Deutsche Demokratische Republik",
+                R.drawable.ddr, R.raw.einheits);
         playlist.songs.add(song);
 
 
-        song = new Song ("Happy Rock", "bensound.com",
-                R.drawable.happyrock, R.raw.happyrock);
+        song = new Song ("义勇军进行曲", "孙师毅、聂耳",
+                R.drawable.china, R.raw.fanwei);
         playlist.songs.add(song);
 
 
-        song = new Song("Hey", "bensound.com",
-                R.drawable.hey, R.raw.hey);
+        song = new Song("Подмосковные вечера", "Василий Павлович Соловьёв-Седой",
+                R.drawable.ussr, R.raw.moscow);
         playlist.songs.add(song);
 
-
-        song = new Song("Summer", "bensound.com",
-                R.drawable.summer, R.raw.summer);
+        song = new Song("Scree", "Hana Domingo",
+                R.drawable.bee, R.raw.hanah);
         playlist.songs.add(song);
 
     }
