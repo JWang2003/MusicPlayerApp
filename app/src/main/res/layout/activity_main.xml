@@ -8,7 +8,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bgFlagView"
         android:layout_width="800dp"
         android:layout_height="match_parent"
         android:rotation="90"
@@ -65,12 +65,13 @@ tools:context=".MainActivity">
             android:textColor="#ffffff"
             android:textSize="25sp" />
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="90dp"
+            android:id="@+id/pfpDisplay"
+
+            android:layout_width="120dp"
             android:layout_height="47dp"
             android:layout_weight="1"
-            android:layout_marginEnd="20dp"
-            app:srcCompat="@drawable/ahyes" />
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/pfp_xi" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,7 +83,7 @@ tools:context=".MainActivity">
         android:layout_marginBottom="20dp">
         <ImageButton
             android:id="@+id/rickroll"
-            android:layout_width="50dp"
+            android:layout_width="30dp"
             android:layout_height="80dp"
             android:layout_weight="1"
             android:background="@drawable/agony"
@@ -107,14 +108,16 @@ tools:context=".MainActivity">
                 android:layout_marginBottom="10dp"
                 tools:ignore="RtlHardcoded" />
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/settings"
+                android:onClick="onClickSettings"
+                android:clickable="true"
                 android:gravity="right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
                 android:layout_marginRight="40dp"
                 android:textSize="20sp"
-                android:text="@string/help"
+                android:text="@string/settings"
                 tools:ignore="RtlHardcoded" />
         </LinearLayout>
     </LinearLayout>

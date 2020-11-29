@@ -4,9 +4,25 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="welcome">Welcome</string>
-    <string name="rick_roullete">Rick Roullete</string>
+    <string name="rick_roullete">Rick Roulette</string>
     <string name="our_songs">Our Songs</string>
     <string name="help">Help</string>
     <string name="home">Home</string>
-
+    <string name="settings">Settings</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="select_theme">Select Theme</string>
+    <string name="set_rick_roulette_odds">Set Rick Roulette Odds</string>
+    <string name="select_flag_theme">Select Flag Theme</string>
+    <string-array name="flags_array">
+        <item>China</item>
+        <item>Canada</item>
+        <item>UK</item>
+        <item>USA</item>
+    </string-array>
+    <string-array name="pfps_array">
+        <item>Xi</item>
+        <item>Trudeau</item>
+        <item>Johnson</item>
+        <item>Biden</item>
+    </string-array>
 </resources>

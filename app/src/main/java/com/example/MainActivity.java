@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 
     // XML Views
     RecyclerView songsRecyclerView;
+    ImageView pfpDisplay;
 
     // Properties
     Playlist playlist = new Playlist();
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     Integer currentSongIndex = 0;
     boolean rickrollModeEnabled = false;
     ImageButton rickrollButton;
+    TextView settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         setUpGridLayout();
         setUpButtonHandlers();
     }
+
+
 
 
     // Initializing Song instances
@@ -106,21 +110,34 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     void connectXMLViews() {
         songsRecyclerView = findViewById(R.id.recyclerView);
         rickrollButton = findViewById(R.id.rickroll);
+        settings = findViewById(R.id.settings);
+    pfpDisplay = findViewById(R.id.pfpDisplay);
     }
 
     void setUpButtonHandlers() {
         rickrollButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            rickrollModeEnabled = true;
-            System.out.println(">>> Rickroll mode enabled (forever)!");
+            if (!rickrollModeEnabled) {
+                rickrollModeEnabled = true;
+                System.out.println(">>> Rickroll mode enabled!");
+            } else {
+                rickrollModeEnabled = false;
+                System.out.println(">>> Rickroll mode disabled!");
+                }
             }
         });
     }
 
+    public void onClickSettings(View view) {
+        System.out.println("Clicked settings");
+        Intent intent = new Intent(this, SettingsMain.class);
+        startActivity(intent);
+    }
+
     boolean determineRickrollState() {
-                //TODO: interface for inputting odds
-        int upperLimit = 6;             // temporary constant in absence of user input
+        Bundle extras = getIntent().getExtras();
+        int upperLimit = extras.getInt("EXTRA_RICKROLL_ODDS_UPPERLIMIT");
         Random r = new Random();
         int randInt = r.nextInt(upperLimit);
         System.out.println(">>> The random integer generated was " + randInt);
@@ -136,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 // This method was implemented from SongViewHolder
     @Override
     public void onNoteClick(int position) {
-
         // Navigate to PlaySongMain with current song
         System.out.println("Clicked: " + position);
         Intent intent = new Intent(this, PlaySongMain.class);
@@ -147,4 +163,5 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         startActivity(intent);
 
     }
+
 }
