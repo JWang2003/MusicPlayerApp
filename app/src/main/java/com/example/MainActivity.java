@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         populateDataModel();
         connectXMLViews();
         setUpGridLayout();
-//        setUpButtonHandlers();
+        setUpButtonHandlers();
         absolutePlaylist = new ArrayList<>(playlist.songs);
     }
 
@@ -202,20 +202,14 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     }
 
     // feature to disable rickroll mode was removed
-//    void setUpButtonHandlers() {
-//        rickrollButton.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            if (!rickrollModeEnabled) {
-//                rickrollModeEnabled = true;
-//                System.out.println(">>> Rickroll mode enabled!");
-//            } else {
-//                rickrollModeEnabled = false;
-//                System.out.println(">>> Rickroll mode disabled!");
-//                }
-//            }
-//        });
-//    }
+    void setUpButtonHandlers() {
+        rickrollButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+                flagView.setImageResource(R.drawable.swag_af);
+            }
+        });
+    }
 
     public void onClickSettings(View view) {
         System.out.println("Clicked settings");

@@ -151,7 +151,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="right"
-                    android:text="@string/our_songs"
+                    android:text="@string/random_song"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
                     tools:ignore="RtlHardcoded" />
