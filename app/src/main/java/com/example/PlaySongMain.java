@@ -32,6 +32,7 @@ public class PlaySongMain extends AppCompatActivity {
     ImageButton loopButton;
     //checks if Mp3 was playing before stop
     boolean isPlaying = false;
+    boolean lastSongWasRick = false;
     //checks if rickRoll is playing in current media player.
     boolean rickRollIsPlaying = false;
 
@@ -45,6 +46,21 @@ public class PlaySongMain extends AppCompatActivity {
             public void onCompletion(MediaPlayer mp) {
                 if (!mediaPlayer.isLooping()) {
                     songOver();
+                    // Play the current song once Rick Roll ends
+                    if (lastSongWasRick){
+                        rickRollIsPlaying = false;
+                        displayCurrentSong();
+                        playCurrentSong();
+                        // Automatically play the next when song ends
+                    } else if (currentSongIndex < (songs.size() - 1)) {
+                            switchSong(currentSongIndex, currentSongIndex + 1);
+                            switchPlay();
+                            //set arraylist index to 0 when detecting that currentSongIndex is the max arraylist index already.
+                    } else {
+                        currentSongIndex = 0;
+                        switchPlay();
+                    }
+
                 }
             }
         });
@@ -64,7 +80,7 @@ public class PlaySongMain extends AppCompatActivity {
     }
 
     //COMMENT OUT WHEN WANT TO SHOW REGULAR SONG INFO DURING RICKROLL
-    /*void displayRickRoll() {
+    void displayRickRoll() {
         System.out.println("DisplayRickroll");
         TextView songTitle = findViewById(R.id.songName);
         songTitle.setText(R.string.rickroll_songname);
@@ -72,8 +88,7 @@ public class PlaySongMain extends AppCompatActivity {
         artistTitle.setText(R.string.rickroll_artistname);
         ImageView image = findViewById(R.id.songImage);
         image.setImageResource(R.drawable.agony);
-        startRickRoll();
-    }*/
+    }
 
 
     // Roulette that determines if rickroll is played via rickrollOdds
@@ -89,7 +104,9 @@ public class PlaySongMain extends AppCompatActivity {
             System.out.println("Going to display rickroll");
             rickRollIsPlaying = true;
             startRickRoll(); //COMMENT OUT WHEN WANT TO SHOW RICKROLL SONG INFO DURING RICKROLL
-           /* displayRickRoll();*/ //COMMENT OUT WHEN WANT TO SHOW REGULAR SONG INFO DURING RICKROLL
+            displayRickRoll(); //COMMENT OUT WHEN WANT TO SHOW REGULAR SONG INFO DURING RICKROLL
+        } else {
+            playCurrentSong();
         }
 
     }
@@ -115,10 +132,11 @@ public class PlaySongMain extends AppCompatActivity {
         }
         setupButtonHandlers();
         System.out.println(rickrollOdds);
-        RickRoulette();
 
         // Process the extra information from intent
         getIncomingIntent();
+
+        RickRoulette();
     }
 
     private void getIncomingIntent() {
@@ -231,8 +249,8 @@ public class PlaySongMain extends AppCompatActivity {
                 System.out.println("index: " + currentSongIndex);
 
                 /*if (!rickRollIsPlaying) */ //COMMENT OUT WHEN WANT TO SHOW REGULAR SONG INFO DURING RICKROLL
-                { displayCurrentSong();
-                }
+//                { displayCurrentSong();
+//                }
             }
 
         });
@@ -244,6 +262,7 @@ public class PlaySongMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 rickRollIsPlaying = false;
+                loopButton.setBackgroundResource(R.drawable.set_loop_on);
                 shuffleSong();
                 if (!(mediaPlayer==null)) {
                     songOver();
@@ -254,10 +273,10 @@ public class PlaySongMain extends AppCompatActivity {
                     pauseplayButton.setBackgroundResource(R.drawable.pause);
                 }
                 /*if (!rickRollIsPlaying) */ //COMMENT OUT WHEN WANT TO SHOW REGULAR SONG INFO DURING RICKROLL
-                    {displayCurrentSong();
-                    playCurrentSong();
-                    pauseplayButton.setBackgroundResource(R.drawable.pause);
-                }
+//                    {displayCurrentSong();
+//                    playCurrentSong();
+//                    pauseplayButton.setBackgroundResource(R.drawable.pause);
+//                }
             }
         });
 
@@ -298,6 +317,7 @@ public class PlaySongMain extends AppCompatActivity {
 
     //Function that plays song
     void playCurrentSong() {
+        lastSongWasRick = false;
         System.out.println("play @ " + currentSongIndex);
         // Check if media player already exists
         if (mediaPlayer == null) {
@@ -309,8 +329,10 @@ public class PlaySongMain extends AppCompatActivity {
         // Plays media player mp3
         System.out.println("playCurrentSong mediaPlayer.start()");
         mediaPlayer.start();
+        pauseplayButton.setBackgroundResource(R.drawable.pause);
         mediaCompleteListener();
         isPlaying = true;
+
     }
 
 
@@ -321,6 +343,7 @@ public class PlaySongMain extends AppCompatActivity {
         if (mediaPlayer != null) {
             // Pauses media player mp3
             isPlaying = false;
+            pauseplayButton.setBackgroundResource(R.drawable.play);
             mediaPlayer.pause();
         }
 
@@ -328,16 +351,19 @@ public class PlaySongMain extends AppCompatActivity {
 
     //Function that is normally called when pressing nextSong/previousSong button.
     void switchSong(int fromIndex, int toIndex) {
+        rickRollIsPlaying = false;
         currentSongIndex = toIndex;
         System.out.println("index: " + currentSongIndex);
-        displayCurrentSong();
+//        displayCurrentSong();
 
     }
 
     void switchPlay() {
         RickRoulette();
+        loopButton.setBackgroundResource(R.drawable.set_loop_on);
         if (!rickRollIsPlaying && isPlaying && mediaPlayer == null) {
             playCurrentSong();
+            displayCurrentSong();
             pauseplayButton.setBackgroundResource(R.drawable.pause);
         }
     }
@@ -376,9 +402,11 @@ public class PlaySongMain extends AppCompatActivity {
 
     //Plays rickroll mp3
     void startRickRoll() {
+        lastSongWasRick = true;
+        displayRickRoll();
         System.out.println("startRickRoll");
         if (mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(PlaySongMain.this, R.raw.rickroll);
+            mediaPlayer = MediaPlayer.create(PlaySongMain.this, R.raw.hanaroll);
             pauseplayButton.setBackgroundResource(R.drawable.pause);
             System.out.println("startRickRoll mediaPlayer.start()");
             isPlaying = true;
@@ -394,23 +422,22 @@ public class PlaySongMain extends AppCompatActivity {
 
     //What play button does when playing normal song
     void playNormal() {
+        lastSongWasRick = false;
         System.out.println("play notRickroll");
         if (mediaPlayer == null) {
             playCurrentSong();
-            pauseplayButton.setBackgroundResource(R.drawable.pause);
             // If mediaPlayer is not already playing (paused), play current song.
         } else if (!mediaPlayer.isPlaying()) {
             playCurrentSong();
-            pauseplayButton.setBackgroundResource(R.drawable.pause);
             // If mediaPlayer is already playing, pause the song.
         } else {
             pauseCurrentSong();
-            pauseplayButton.setBackgroundResource(R.drawable.play);
         }
     }
 
     //What play button does when playing rickRoll
     void playRickroll() {
+        lastSongWasRick = true;
         if (mediaPlayer == null) {
             startRickRoll();
             pauseplayButton.setBackgroundResource(R.drawable.pause);

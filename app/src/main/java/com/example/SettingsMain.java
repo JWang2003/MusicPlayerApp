@@ -201,9 +201,8 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
             case 2:
                 mConstraintLayout.setBackground(ContextCompat.getDrawable(SettingsMain.this, R.drawable.gradientbackgroundblue));
                 break;
+
             }
 
     }
-
-
 }
