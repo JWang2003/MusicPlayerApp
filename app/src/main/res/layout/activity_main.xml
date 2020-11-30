@@ -118,9 +118,9 @@
 
             <!--Rickroullette button-->
             <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
+                android:layout_width="35dp"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
+                android:layout_margin="0dp"
                 android:layout_marginLeft="0dp"
                 android:layout_weight="1"
                 android:elevation="10dp"
