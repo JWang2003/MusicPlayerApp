@@ -310,7 +310,6 @@ public class PlaySongMain extends AppCompatActivity {
             if (currentSongIndex != previousSongIndex) break;
             }
         //Displays current song
-
         }
 
 
@@ -318,6 +317,7 @@ public class PlaySongMain extends AppCompatActivity {
     //Function that plays song
     void playCurrentSong() {
         lastSongWasRick = false;
+        displayCurrentSong();
         System.out.println("play @ " + currentSongIndex);
         // Check if media player already exists
         if (mediaPlayer == null) {
