@@ -27,4 +27,5 @@
     </string-array>
     <string name="rickroll_artistname">Rick Astley</string>
     <string name="rickroll_songname">Never Gonna Give You Up</string>
+    <string name="random_song">Random Song</string>
 </resources>

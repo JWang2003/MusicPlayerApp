@@ -87,7 +87,7 @@ public class PlaySongMain extends AppCompatActivity {
         TextView artistTitle = findViewById(R.id.songWriter);
         artistTitle.setText(R.string.rickroll_artistname);
         ImageView image = findViewById(R.id.songImage);
-        image.setImageResource(R.drawable.agony);
+        image.setImageResource(R.drawable.swag_af);
     }
 
 

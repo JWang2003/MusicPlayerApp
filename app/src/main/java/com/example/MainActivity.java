@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     Playlist playlist = new Playlist();
     ArrayList<Song> absolutePlaylist; // This is because recyclerview will shrink the playlist, so we need a default one
     SongAdapter songAdapter;
-    boolean rickrollModeEnabled = false;
+    boolean rickBackground = false;
     ImageButton rickrollButton;
     TextView settings;
     TextView randomSong;
@@ -194,13 +194,13 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         rickrollButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (!rickrollModeEnabled) {
-                rickrollModeEnabled = true;
-                System.out.println(">>> Rickroll mode enabled!");
+            if (!rickBackground) {
+                rickBackground = true;
+                flagView.setImageResource(R.drawable.swag_af);
             } else {
-                rickrollModeEnabled = false;
-                System.out.println(">>> Rickroll mode disabled!");
-                }
+                rickBackground = false;
+                flagView.setImageResource(flag);
+            }
             }
         });
     }
