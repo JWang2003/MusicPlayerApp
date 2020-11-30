@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <!--Background [start]-->
     <ImageView
         android:id="@+id/bgFlagView"
@@ -50,7 +49,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#ffffff"
                 android:textSize="36sp" />
-
 
             <!--Search bar-->
             <SearchView
@@ -171,6 +169,7 @@
                     tools:ignore="RtlHardcoded" />
             </LinearLayout>
         </LinearLayout>
+
         <!--Bottom bar [end]-->
     </LinearLayout>
     <!--Top section [end]-->
@@ -186,6 +185,5 @@
         android:id="@+id/recyclerView"
         android:scrollbars="vertical"/>
     <!--Recycler view [end]-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

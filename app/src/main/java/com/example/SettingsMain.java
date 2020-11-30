@@ -75,11 +75,8 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
         ImageButton back = findViewById(R.id.back);
         mConstraintLayout = findViewById(R.id.settingsscreen);
 
-        if (theme != 0) {
-            applyChanges();
-        } else {
-            mConstraintLayout.setBackgroundColor(R.drawable.gradientbackgroundred);
-        }
+        applyChanges();
+
 
         // Set up back button
         back.setOnClickListener(new View.OnClickListener() {
@@ -197,16 +194,15 @@ public class SettingsMain extends AppCompatActivity implements AdapterView.OnIte
     }
 
     void applyChanges(){
-        if (theme != 0) {
-            switch(theme){
-                case 1:
-                    mConstraintLayout.setBackground(ContextCompat.getDrawable(SettingsMain.this, R.drawable.gradientbackgroundred));
-                    break;
-                case 2:
-                    mConstraintLayout.setBackground(ContextCompat.getDrawable(SettingsMain.this, R.drawable.gradientbackgroundblue));
-                    break;
+        switch(theme){
+            case 1:
+                mConstraintLayout.setBackground(ContextCompat.getDrawable(SettingsMain.this, R.drawable.gradientbackgroundred));
+                break;
+            case 2:
+                mConstraintLayout.setBackground(ContextCompat.getDrawable(SettingsMain.this, R.drawable.gradientbackgroundblue));
+                break;
             }
-        }
+
     }
 
 

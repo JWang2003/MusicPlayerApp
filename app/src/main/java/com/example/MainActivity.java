@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         populateDataModel();
         connectXMLViews();
         setUpGridLayout();
-//        setUpButtonHandlers();
         absolutePlaylist = new ArrayList<>(playlist.songs);
     }
 
@@ -59,9 +58,8 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         // Initialize properties of playlist
         playlist.name = "My Playlist";
         playlist.songs = new ArrayList<>();
-        // ^ Used to be <Songs> instead of <>
 
-        // Create & initialize first song
+        // Create & initialize each song
 
         Song song = new Song ("Happy Rock", "bensound.com",
                 R.drawable.happyrock, R.raw.happyrock);
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
 
         song = new Song("Севастопольский вальс", "Ансамбль Александрова",
                 R.drawable.redarmy, R.raw.sevastop);
-        // Add first song to to array of songs in the playlist
+
         playlist.songs.add(song);
 
         song = new Song("A New Beginning", "bensound.com",
@@ -80,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
                 R.drawable.summer, R.raw.summer);
         playlist.songs.add(song);
 
-        // Reusing song variable
         song = new Song("中华人民共和国国歌", "田汉",
                 R.drawable.anthem, R.raw.fanwei);
         playlist.songs.add(song);
@@ -147,33 +144,21 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
         searchView = findViewById(R.id.search_bar);
         mConstraintLayout = findViewById(R.id.main);
         flagView = findViewById(R.id.bgFlagView);
-        SharedPreferences settings = getSharedPreferences("Settings", 0);
-        SharedPreferences.Editor editor = settings.edit();
 
-        if (pfp != 0) {
-            pfpDisplay.setImageResource(pfp);
-        } else {
-            pfpDisplay.setImageResource(R.drawable.pfp_xi);
+        pfpDisplay.setImageResource(pfp);
+        switch(theme){
+            case 1:
+                mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundred));
+                break;
+            case 2:
+                mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundblue));
+                break;
+            default:
+                System.out.println("Default background colour");
+                mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundred));
         }
-        if (theme != 0) {
-            switch(theme){
-                case 1:
-                    mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundred));
-                    break;
-                case 2:
-                    mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundblue));
-                    break;
-                default:
-                    System.out.println("Default background colour");
-                    mConstraintLayout.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.gradientbackgroundred));
-            }
-        }
-        if (flag != 0) {
-            flagView.setImageResource(flag);
-        } else {
-            flagView.setImageResource(R.drawable.flag_china);
-        }
-        editor.commit();
+
+        flagView.setImageResource(flag);
 
         searchView.setOnClickListener(new SearchView.OnClickListener() {
             @Override
@@ -224,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements SongViewHolder.On
     }
 
 
-    // this method was implemented from SongViewHolder
+    // This method was implemented from SongViewHolder
     @Override
     public void onNoteClick(int position) {
         // Navigate to PlaySongMain with current song

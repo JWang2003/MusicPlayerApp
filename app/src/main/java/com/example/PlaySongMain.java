@@ -52,7 +52,6 @@ public class PlaySongMain extends AppCompatActivity {
 
 
 
-
     //Displays currentSong when switching songs
     private void displayCurrentSong() {
         currentSong = songs.get(currentSongIndex);
